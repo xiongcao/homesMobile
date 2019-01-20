@@ -1,0 +1,438 @@
+.app-header{
+	position: fixed;
+	z-index: 20;
+	top:0;
+	right: 0;
+	left: 0;
+	height: 44px;
+	padding-right: 10px;
+	padding-left: 10px;
+	border-bottom: 0;
+	background-color: #10443f;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+.app-header-back{
+	margin-right: -10px;
+	margin-left: -10px;
+	padding-right: 10px;
+	padding-left: 10px;	
+	float:left;
+}
+.app-header-back:before{
+	content: " ";
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	border-top: 2px solid #ccc;
+	border-right: 2px solid #ccc;
+	transform: rotate(-135deg);
+	position: absolute;
+	top: 16px;
+	left: 4vw;	
+}
+.app-header .app-header-title{
+	right: 60px;
+	left: 60px;
+	display: inline-block;
+	overflow: hidden;
+	width: auto;
+	margin: 0;
+	text-overflow: ellipsis;	
+}
+.app-header-title{
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 44px;
+	position: absolute;
+	display: block;
+	width: 100%;
+	margin: 0 -10px;
+	padding: 0;
+	text-align: center;
+	white-space: nowrap;
+	color: #fff;	
+}
+.app-pull-right{
+	float:right
+}
+.app-pull-right img{
+	width:18px;
+	height:18px;
+	position:absolute;
+	top:12px;
+	right:4vw
+}
+.weui-mask {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.98);
+}
+.weui-skin_android .weui-actionsheet {
+    position: fixed;
+    left: 50%;
+    top: 44%;
+    bottom: auto;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 78vw;
+    box-sizing: border-box;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    background: transparent;
+    -webkit-transition: -webkit-transform .3s;
+    transition: -webkit-transform .3s;
+    transition: transform .3s;
+    transition: transform .3s, -webkit-transform .3s;
+    z-index:2000
+}
+.weui-input{
+	width:100%;
+	height:2rem;
+	background: transparent;
+	border:none;
+	border-bottom:1px solid #ccc;
+	color:#ccc;
+	font-size:1.0rem;
+	text-align: center;
+	margin-bottom:1rem
+}
+.weui-button{
+	width:100%;
+	height:2rem;
+	background: #9c8059;
+	border:none;
+	font-size: 0.8rem;
+	color:#fff
+}
+.weui-close{
+    position: fixed;
+	top:3%;
+	right:5%;
+	z-index:2000
+}
+.weui-close img{
+	width:1rem;
+	height:1rem
+}
+.app-content{
+	position:relative;
+	padding:44px 0 0;
+	z-index:0;
+	background: #fff;
+}
+.app-content-top{
+	position:relative;
+	padding:56px 15px 10px;
+}
+.art-title{
+	display:block;
+	width:66vw;
+	font-size:1.5rem;
+	line-height: 2.0rem;
+	font-weight:600
+}
+.nav-thumbs {
+    position: relative;
+    width:60vw;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    font-size:0.8rem;
+    height:4rem;
+}
+.nav-thumbs img {
+    width: 1.0rem;
+    margin-right: 1vw;
+}
+.art-text{
+	font-size:1.0rem
+}
+.app-content-pic{
+	width:100vw;
+	margin:15px 0;
+	display:flex;
+	flex-direction: column;
+}
+.app-content-child{
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 1rem;	
+}
+.app-content-child img{
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+}
+#sign-1 {
+    position: absolute;
+    left: 60%;
+    top: 65%;
+    width: 2rem;
+    height: 2rem;
+}
+.circle {
+    width: 1.4rem;
+    height: 1.4rem;
+    position: absolute;
+    top: 30%;
+    left: 0%;
+}
+.circle1,
+.circle2,
+.circle3,
+.center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 0.35rem;
+    background-color: #111111;
+}
+.center {
+    background: #fff;
+    text-align: center;
+}
+.circle1 {
+    -webkit-animation: circle-animation 3s linear infinite;
+    animation: circle-animation 3s linear infinite;
+}
+.circle2 {
+    -webkit-animation: circle-animation 3s linear 0.8s infinite;
+    animation: circle-animation 3s linear 0.8s infinite;
+}
+.circle3 {
+    -webkit-animation: circle-animation 3s linear 1.6s infinite;
+    animation: circle-animation 3s linear 1.6s infinite;
+}
+@-webkit-keyframes circle-animation {
+    from {
+        opacity: 1;
+        -webkit-transform: scale(0);
+    }
+    to {
+        opacity: 0.2;
+        -webkit-transform: scale(3);
+    }
+}
+@keyframes circle-animation {
+    from {
+        opacity: 1;
+        -webkit-transform: scale(0);
+    }
+    to {
+        opacity: 0.2;
+        -webkit-transform: scale(3);
+    }
+}
+.app-content-down{
+	position:relative;
+	padding:10px 4vw 36px;
+	overflow:hidden;
+	display:flex;
+	justify-content: center;
+}
+.btn-wish{
+	font-size: 0.8rem;
+	color: #222225;
+	width:26vw;
+	height:2.4rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid #333;
+	margin-right: 1vw;
+	background: transparent;
+	border-color: #222225;	
+	margin:0 4vw
+}
+.btn-wish img {
+    width: 0.8rem;
+    height: 0.8rem;
+    margin: 0 0.5vw 0 0;
+}
+.scene-container{
+	position: relative;
+	overflow: hidden;
+	padding:5px 0.5rem;
+	margin:40px 0 20px;
+}
+.scene-container:before{
+	position: absolute;
+	left: 0.5rem;
+	right: 0.5rem;
+	top: 0;
+	content: '';
+	height: 1px;
+	background: #cdcdcd;	
+}
+#menu-1-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px 0.5rem 1rem;
+    box-sizing: border-box;
+}
+.menu-list-title{
+	width:100%;
+	font-size:1.0rem;
+	margin-bottom:20px
+}
+.app-pic-cell-2 {
+    width: 49%;
+    padding: 0;
+    height:13.5rem;
+    margin-bottom:1rem;
+}
+.app-pic-cell-2:nth-child(2n){
+    margin-right:2%;
+}
+.app-pic-cell-2 img {
+    width: 100%;
+}
+#menu-1-list .geo-transform {
+    width: 45vw;
+    height: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0.4rem 4vw;
+    left:1vw;
+    box-sizing: border-box;
+}
+.heart-card img {
+    width: 1rem;
+    height: 1rem;
+}
+#menu-1-list .geo-transform .geo-label{
+	font-size: 1.0rem;
+	height: 1.6rem;
+	width:100%;	
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.label-cell img {
+    width: 1.0rem;
+    height: 1.0rem;
+    margin-right: 2vw;
+}
+.geo-transform .label-content{
+	height: 1.6rem;
+}
+.app-content-img{
+	padding:30px 0 0;
+	display:flex;
+	justify-content: center;
+	z-index:100
+}
+.app-content-img img{
+	max-width:60%;
+	margin-top:40px
+}
+.app-nav-text {
+    width: 100%;
+    height: auto;
+    background: #fff;
+    box-sizing: border-box;
+    padding: 1rem 5vw;
+    margin-top: -1rem;
+}
+.app-nav-text h4 {
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Avenir';
+    margin-top: 1rem;
+}
+.label-content {
+    width: 100%;
+    height: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+}
+.label-content img {
+    width: 1.0rem;
+    height: 1rem;
+    margin: 0 1vw;
+}
+.app-introduce {
+    width: 100%;
+    height: 5rem;
+    font-size: 0.8rem;
+    margin: 1rem 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+.app-nav-list {
+    width: 100%;
+    height: 6rem;
+    display: flex;
+    padding: 0;
+}
+.app-nav-list img {
+    width: 33.3%;
+}
+.app-bg-color{
+	width:280%;
+	height:23rem;
+	z-index:-1;
+	position:absolute;
+	left:-20%;
+	background: #10443f;
+	transform: rotate(28deg);
+}
+.app-container{
+	position:relative;
+	width:96vw;
+	height:auto;
+	background: #fff;
+	margin:-2rem auto;
+	z-index:1
+}
+.main-sign-2 {
+    width: 94vw;
+    height: 18rem;
+    margin-top: -0.4rem;
+    display: flex;
+    background: #fff;
+    position: relative;
+    padding: 2rem 6vw;
+    box-sizing: border-box;
+}
+.main-sign-list {
+    overflow: hidden;
+    position: relative;
+    color: #6a6a6a;
+    font-size: 0.8rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+}
+.main-sign-list img {
+    width: 20vw;
+}
+.main-sign-list h3 {
+    margin-top: 1rem;
+    display: block;
+    width: 100%;
+    height: 2rem;
+    color: #0a0a09;
+    font-size: 1.0rem;
+}
+.main-sign-list p {
+    margin-top: 3rem;
+}

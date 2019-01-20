@@ -1,0 +1,98 @@
+.app-content img{
+	width: 100%;
+}
+.app-contents {
+    margin-top: -1.5rem;
+    padding: 0 0.5rem;
+    position: relative;
+    overflow: hidden;
+    height: auto
+}
+.design {
+    background: #2b2b2b;
+    margin: 0 0 .5rem;
+    padding: 0.8rem 1.4rem;
+}
+.design-tl {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.desigin-see {
+    display: flex;
+    align-items: center;
+}
+.desigin-see img {
+    width: 1rem;
+    height: 1rem;
+    margin-left: 1rem;
+}
+.desigin-see span {
+    font-size: 0.8rem;
+    color: #fff;
+    padding-left: 0.5rem;
+}
+.art-content {
+    width: 80vw;
+    height: auto;
+    margin-left: 4vw;
+    color: #fff;
+    font-size: 0.5rem;
+}
+.design-info {
+    color: #fff;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    margin: 1rem ;
+    display:flex;
+    flex-direction: column;
+}
+.art-content-cell {
+    width: 70vw;
+    margin: 0 0 1rem 6vw;
+}
+.art-content-cell h4,.art-content-cell h5{
+    font-size: 0.8rem;
+    font-weight: 400;
+    margin-bottom:0.5rem
+}
+.art-content-cell p {
+    font-size: 0.7rem;
+    color: #9b9b9b;
+    line-height: 1.0rem;
+}
+.art-bottom {
+    position: relative;
+    overflow: hidden;
+    padding: 1rem 6vw;
+}
+.btn-block {
+    padding: 0.3rem 5vw;
+    font-size: 0.8rem;
+    font-weight:400;
+    background: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+    margin-right: 1vw;
+}
+.btn-money {
+    color: #a27a4a;
+    border: 1px solid #a27a4a;
+}
+.middle-bottom {
+    width: auto;
+    position: absolute;
+    bottom: 3.5rem;
+    right: 12vw;
+    height: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    color: #fff;
+    font-size: 0.7rem;
+}
+.middle-bottom img{
+	margin-right:1vw;
+	width:1rem;
+	height:1rem
+}

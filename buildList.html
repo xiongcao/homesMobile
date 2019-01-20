@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>楼盘列表</title>
+    <link rel="stylesheet" href="css/rem.css" />
+    <link rel="stylesheet" href="css/iconfont.css" />
+    <link href="css/swiper.min.css" rel="stylesheet" media="all" />
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/buildList.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="app-wrapper">
+            <div class="bg orange">
+                <p>格拉斯小镇</p>
+            </div>
+			<header class="global-nav">
+				<div class="primary-wrapper module-pad">
+					<div class="primary-container">
+						<a class="logo">
+							<img src="img/logo.png" />
+						</a>
+						<div class="icons">
+							<i class="icon iconfont icon-daohangpinlei"></i>
+							<i class="icon iconfont icon-guanbi"></i>
+						</div>
+					</div>
+					<!-- 导航 -->
+					<div class="slide-navlist" id="1">
+                    <ul class="slidenav-cells">
+                        <!--<li class="slidenav-cell slidenav-active">
+                            <a href="index.html">
+                                <span class="slidenav-cell-left">首页</span>
+                                <span class="slidenav-cell-right"><i class="iconfont icon-youjiantou"></i></span>									
+                            </a>
+                        </li>
+                        <li class="slidenav-cell">
+                            <a href="JavaScript:;" id="second">
+                                <span class="slidenav-cell-left">案例赏析</span>
+                                <span class="slidenav-cell-right"><i class="iconfont icon-youjiantou"></i></span>									
+                            </a>
+                            <!-- 案例赏析 - 子菜单 -->
+                            <!--<ul class="slidenav-cells-second">
+                                <li class="slidenav-cell slidenav-active slidenav-cell-index-second">
+                                    <a href="javascript:;">
+                                        <img class="left-pic" src="img/left_arrow.png" alt="">
+                                        <span class="slidenav-cell-left">案例赏析</span>                                      
+                                    </a>
+                                </li>
+                                <li class="slidenav-cell">
+                                    <a href="case.html">
+                                        <span class="slidenav-cell-left">设计界</span>
+                                    </a>
+                                </li>
+                                <li class="slidenav-cell">
+                                    <a href="#">
+                                        <span class="slidenav-cell-left">设计师案例</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="slidenav-cell">
+                            <a href="build.html">
+                                <span class="slidenav-cell-left">楼盘动态</span>
+                                <span class="slidenav-cell-right"><i class="iconfont icon-youjiantou"></i></span>
+                            </a>
+                        </li>
+                        <li class="slidenav-cell">
+                            <a id="fourth">
+                                <span class="slidenav-cell-left">设计力量</span>
+                                <span class="slidenav-cell-right"><i class="iconfont icon-youjiantou"></i></span>									
+                            </a>
+                            <!-- 设计力量 - 子菜单 -->
+                            <!--<ul class="slidenav-cells-second">
+                                    <li class="slidenav-cell slidenav-active slidenav-cell-index-second">
+                                        <a href="javascript:;">
+                                            <img class="left-pic" src="img/left_arrow.png" alt="">
+                                            <span class="slidenav-cell-left">设计力量</span>
+                                        </a>
+                                    </li>
+                                    <li class="slidenav-cell">
+                                        <a href="#">
+                                            <span class="slidenav-cell-left">产品设计部</span>
+                                            <!-- <span class="slidenav-cell-right"><i class="iconfont icon-youjiantou"></i></span>									 -->
+                                        <!--</a>
+                                    </li>
+                                    <li class="slidenav-cell">
+                                        <a href="#">
+                                            <span class="slidenav-cell-left">工程部</span>
+                                            <!-- <span class="slidenav-cell-right"><i class="iconfont icon-youjiantou"></i></span>									 -->
+                                        <!--</a>
+                                    </li>
+                                    <li class="slidenav-cell">
+                                        <a href="#">
+                                            <span class="slidenav-cell-left">深化设计部</span>
+                                        </a>
+                                    </li>
+                                    <li class="slidenav-cell">
+                                        <a href="#">
+                                            <span class="slidenav-cell-left">生态设计部</span>
+                                        </a>
+                                    </li>
+                                    <li class="slidenav-cell">
+                                        <a href="#">
+                                            <span class="slidenav-cell-left">庭院设计部</span>
+                                            <!-- <span class="slidenav-cell-right"><i class="iconfont icon-youjiantou"></i></span>									 -->
+                                        <!--</a>
+                                    </li>
+                                    <li class="slidenav-cell">
+                                        <a href="#">
+                                            <span class="slidenav-cell-left">预算部</span>
+                                            
+                                        </a>
+                                    </li>
+                                    <li class="slidenav-cell">
+                                        <a href="#">
+                                            <span class="slidenav-cell-left">睿缔纷凡</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="slidenav-cell">
+                                <a href="BusinessArea.html">
+                                    <span class="slidenav-cell-left">业务领域</span>
+                                    <span class="slidenav-cell-right"><i class="iconfont icon-youjiantou"></i></span>									
+                                </a>
+                            </li>
+                            <li class="slidenav-cell">
+                                <a href="RedefiningStrength.html">
+                                    <span class="slidenav-cell-left">睿缔实力</span>
+                                    <span class="slidenav-cell-right"><i class="iconfont icon-youjiantou"></i></span>									
+                                </a>
+                            </li>
+                            <li class="slidenav-cell">
+                                <a>
+                                    <span class="slidenav-cell-left">设计观点</span>
+                                    <span class="slidenav-cell-right"><i class="iconfont icon-youjiantou"></i></span>									
+                                </a>
+                            </li>
+                            <li class="slidenav-cell">
+                                <a>
+                                    <span class="slidenav-cell-left">关于我们</span>
+                                    <span class="slidenav-cell-right"><i class="iconfont icon-youjiantou"></i></span>									
+                                </a>
+                            </li>								-->
+                        </ul>
+						<div class="nav-login">
+							<button class="btns" id="login">登录 / 注册</button>
+							<button class="btns" id="price">快速报价</button>
+							<p>热线  4008-513-228</p>
+						</div>
+                    </div>
+				</div>
+			</header>
+			<section class="app-content">
+				<img src="img/main_second.png" />
+				<!--<div class="swiper-container">
+				    <div class="swiper-wrapper">
+				        <div class="swiper-slide">
+				        	<img src="img/main_second.png" />
+				        </div>
+				        <div class="swiper-slide">
+				        	<img src="img/main_second.png" />
+				        </div>
+				        <div class="swiper-slide">
+				        	<img src="img/main_second.png" />
+				        </div>
+				    </div>
+			    </div>-->
+			</section>
+        </div>
+        <div class="design">
+            <div class="bottom-content-cell">
+
+            </div>
+        </div>
+		<div class="other-points">
+			<div class="other-line"></div>
+        </div>
+
+        <!-- 内容区 -->
+        <div id="app-content">
+	        <!--<div class="app-pic-list">
+	            <div class="app-pic-cell">
+					<a href="buildDetail.html">
+					    <img src="img/buildDetail_2.png" />
+					</a>
+					<div class="geo-transform">
+						<span>曼哈顿</span>
+						<div class="label-content">
+						    <label>顶层豪宅会所</label>
+						    <span>立即咨询</span>
+						</div>
+					</div>
+				</div>
+			</div>	
+			<div class="app-pic-list">
+				<div class="app-pic-cell">
+				    <a href="buildDetail.html">
+					    <img src="img/buildDetail_2.png" />
+					</a>
+					<div class="geo-transform">
+						<span>曼哈顿</span>
+						<div class="label-content">
+						    <label>顶层豪宅会所</label>
+						    <span>立即咨询</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="app-pic-list">
+				<div class="app-pic-cell">
+				    <a href="buildDetail.html">
+					    <img src="img/buildDetail_2.png" />
+					</a>
+					<div class="geo-transform">
+						<span>曼哈顿</span>
+						<div class="label-content">
+						    <label>顶层豪宅会所</label>
+						    <span>立即咨询</span>
+						</div>
+					</div>
+				</div>
+			</div>	        	-->
+        </div>
+		<div class="other-point">
+			<span class="relate">Other  related</span>
+			<div class="other-line"></div>
+		</div>
+		<div class="category">
+
+		</div>	
+	    <div class="footer">
+	    	<img src="img/bottom-logo.png" class="footer-logo" />
+		  	<div class="bottom-nav">
+		  	    <span>签约合作</span>
+		  	    <span>联系我们</span>
+		  	    <span>工作机会</span>
+		  	    <span>法律信息</span>
+		  	</div>
+		  	<div class="bottom-down">
+		  		<span>关注 Redefining</span>
+		  		<div class="bottom-logo">
+		  			<img src="img/sina.png" />
+		  			<img src="img/weixin.png" />
+		  			<img src="img/QQ.png" />
+		  		</div>
+		  	</div>
+		  	<p>京公网安备11010502025574 · 京ICP证150031号</p>
+	    </div>
+	</div>
+    <div class="weui-skin_android" id="androidActionsheet" style="display: none">
+        <div class="weui-mask"></div>
+        <div class="weui-actionsheet">
+        	<div class="shutdown">
+        		<img src="img/close.png"  />
+        	</div>
+        	<div class="login-window">
+        		<div class="login-top">
+        			<label>Hi,Friends!</label>
+        			<p>Welcome to Redefining Habitat</p>
+        		</div>
+        		<div class="login-middle">
+        			<div class="login-phone">
+        				<input placeholder="请输入手机号" type="text" class="phone-number" />
+        				<div class="tip"></div>
+        			</div>
+        			<div class="login-phone">
+        				<input placeholder="请输入验证码" type="text" class="phone-check" />
+        				<div class="tip"></div>
+        				<span class="btn-get">获取验证码</span>
+        			</div>
+        		</div>
+                <span class="check-tips">1小时之内只能发送3次</span>	        		
+        		<div class="login-bottom">
+        			<button class="btn-submit" id="logins">登录</button>
+        		</div>
+        	</div>
+        	<div class="price-window">
+        		<div class="login-top">
+        			<label>快速获取装修报价</label>
+        		</div>	 
+        		<div class="price-middle">
+        			<input type="text" placeholder="您的姓名" />
+        			<input type="text" placeholder="手机号" />
+        			<input type="text" placeholder="楼盘名称" />
+        			<input type="text" placeholder="房屋面积" />
+        		</div>
+        		<div class="login-bottom">
+        			<button class="btn-submit btn-yellow">获取报价</button>
+        			<p class="price-phone">免费咨询热线: 400-512-228</p>
+        		</div>	        		
+        	</div>
+        </div>
+    </div>
+    <script id="change" type="text/html">
+        {{each data}}
+			<li class="slidenav-cell" id="{{$value.id}}">
+				{{if $value.child.length > 0}}
+					<a href="JavaScript:;" class="slidenav-most">
+						<span class="slidenav-cell-left">{{$value.name}}</span>
+						<span class="slidenav-cell-right"><i class="iconfont icon-youjiantou"></i></span>
+					</a>
+					<ul class="slidenav-cells-second">
+						<li class="slidenav-cell slidenav-cell-index-second">
+							<a href="javascript:;">
+								<img class="left-pic" src="img/left_arrow.png" alt="">
+								<span class="slidenav-cell-left">{{$value.name}}</span>
+								<!-- <span class="slidenav-cell-right"><i class="iconfont icon-youjiantou"></i></span>									 -->
+							</a>
+						</li>
+						{{include 'changes' $value}}
+					</ul>
+				{{else}}
+					<a href="{{$value.url}}?id={{$value.id}}">
+						<span class="slidenav-cell-left">{{$value.name}}</span>
+						<span class="slidenav-cell-right"><i class="iconfont icon-youjiantou"></i></span>
+					</a>				
+				{{/if}}
+			</li>            
+        {{/each}}    	
+    </script>
+    <script id="changes" type="text/html">
+        {{each child}}
+			<li class="slidenav-cell">
+				<a href="{{$value.url}}?id={{$value.id}}">
+					<span class="slidenav-cell-left">{{$value.name}}</span>
+					<!-- <span class="slidenav-cell-right"><i class="iconfont icon-youjiantou"></i></span>									 -->
+				</a>
+			</li>          
+        {{/each}} 
+    </script>  
+    <script id="buildList" type="text/html">
+		<div class="middle-detail">
+            <section class="sect-in">
+                <img src="img/thumbs_up_3.png">
+                <span class="sect-num">{{visit}}</span>
+            </section>	                	
+            <section class="sect-in">
+                <img src="img/fenfanS_19.png">
+                <span class="sect-num">{{collect}}</span>
+            </section>	    				
+        </div>
+        <div class="middle-text">
+            <label></label>
+        </div>	
+        <div class="middle-service">
+        	服务客户 {{num}}位
+        </div>
+        <div class="middle-button">
+            <button class="btn">免费申请户型规划</button>
+            <button class="btn">预约看工地</button>
+            <button class="btn">查看该楼盘在施工地</button>
+        </div>
+    </script>     
+	<script type="text/javascript" src="js/zepto.min.js"></script>
+	<script src="js/swiper.min.js"></script>
+	<script src="js/template-web.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/header.js?v=1.0.1"></script>
+	<script src="js/login.js"></script>
+	<script type="text/javascript">
+		var mySwiper = new Swiper('.swiper-container',{
+			loop:true,
+		    pagination: {
+		        el:'.swiper-pagination',
+		        clickable: true,
+		    },
+			autoplay:1000
+		});
+		$('.app-pic-cell').on('touchstart',function(){
+			$(this).children('.geo-transform').css({
+				'z-index':5,
+				'background':'#ff7c00',
+				'color':'#ffffff'
+			}).find('label').css('color','#ffffff')
+		});
+		$('.app-pic-cell').on('touchend',function(){
+			$(this).children('.geo-transform').css({
+				'z-index':4,
+				'background':'#ffffff',
+				'color':'#a7a6a6'
+			}).find('label').css('color','#1a1712')
+		});
+        var $androidActionSheet = $('#androidActionsheet');
+        var $androidMask = $androidActionSheet.find('.weui-mask');
+        var $showcode = $('.showcode');
+
+        $("#login").on('click', function(){
+            $androidActionSheet.fadeIn(200);
+            $('.icon-guanbi').animate({
+					opacity:'0'
+				},'500','ease-in-out').siblings().animate({
+					opacity:'1'
+				},'500');
+				$('.slide-navlist').prop('id','1').animate({
+					marginTop:'-40rem'
+				},'500','ease-in-out');
+            $androidActionSheet.find('.login-window').css('display','block').next().css('display','none');
+            $androidMask.on('click',function () {
+                $androidActionSheet.fadeOut(200);
+            });
+            $('.shutdown').on('click',function () {
+                $androidActionSheet.fadeOut(200);
+            });
+        });
+        $("#price").on('click', function(){
+            $androidActionSheet.fadeIn(200);
+            $('.icon-guanbi').animate({
+					opacity:'0'
+				},'500','ease-in-out').siblings().animate({
+					opacity:'1'
+				},'500');
+				$('.slide-navlist').prop('id','1').animate({
+					marginTop:'-40rem'
+				},'500','ease-in-out');            
+            $androidActionSheet.find('.price-window').css('display','block').prev().css('display','none');
+            $androidMask.on('click',function () {
+                $androidActionSheet.fadeOut(200);
+            });
+            $('.shutdown').on('click',function () {
+                $androidActionSheet.fadeOut(200);
+            });
+        });
+        console.log(inithead());
+        /*导航*/
+        var changeHtml = template('change',inithead());
+        $(".slidenav-cells").html(changeHtml);
+        /*楼盘详情*/
+        var buildHtml = template('buildList',buildlist(GetQueryString('id')));
+        $(".bottom-content-cell").html(buildHtml);
+        $('.middle-text').append(buildlist(GetQueryString('id')).introduce);
+        $('.app-content').children('img').attr('src',pubUrl+buildlist(GetQueryString('id')).img);
+        /*列表*/
+        console.log(buildcate(GetQueryString('id'),1));
+        $.each(buildcate(GetQueryString('id'),1),function(i,v){
+        	var html = '<div class="app-pic-list">'
+						+'<div class="app-pic-cell">'
+						    +'<a href="buildDetail.html?id='+v.id+'">'
+							    +'<img src="'+pubUrl+v.logo+'" />'
+							+'</a>'
+							+'<div class="geo-transform">'
+								+'<span>'+v.type+'</span>'
+								+'<div class="label-content">'
+								    +'<label>'+v.name+'</label>'
+								    +'<span>立即咨询</span>'
+								+'</div>'
+							+'</div>'
+						+'</div>'
+					+'</div>';
+			$('#app-content').append(html)
+        }); 
+        /*底部菜单*/
+       footerImg()
+	</script>
+</body>
+</html>

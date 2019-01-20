@@ -1,0 +1,114 @@
+.app-nav-img{
+	width:100%;
+}
+.app-nav-text{
+	width:100%;
+	height:auto;
+	background: #fff;
+	box-sizing: border-box;
+	padding:1rem 5vw;
+	margin-top:-1rem
+}
+.app-nav-text h4{
+	height:3rem;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Avenir';
+	margin-top:1rem
+}
+.label-content{
+	width:100%;
+	height:1rem;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	font-size:0.8rem;
+}
+.label-content img{
+	width:1.0rem;
+	height:1rem;
+	margin:0 1vw
+}
+.label-content img:nth-child(2){
+	margin-left:10vw
+}
+.app-introduce{
+	width:100%;
+	height:5rem;
+	font-size:0.8rem;
+	margin: 1rem 0;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	display:-webkit-box;
+	-webkit-line-clamp:3;
+	-webkit-box-orient:vertical; 
+}
+.app-nav-list{
+	width:100%;
+	height:6rem;
+	display:flex;
+}
+.app-nav-list img{
+	width:33.3%
+}
+.item-wrapper{
+	position:relative;
+	padding:0;
+	overflow:hidden;
+	margin:1rem 0;
+	background: #fff;
+}
+.item-wrapper-top{
+	width:100%;
+	height:10rem;
+	display:flex;
+	justify-content: space-between;
+}
+.item-wrapper-top img{
+	max-width:28%;
+}
+.item-wrapper-top .item-wrapper-intro{
+	width:72%;
+	height:10rem;
+	box-sizing: border-box;
+	padding:0.5rem 1rem;
+}
+.item-wrapper-intro label{
+	font-size:1.2rem
+}
+.label-contents{
+    width: 50%;
+    height: 1rem;
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+    margin:0.6rem 0
+}
+.label-contents img {
+    width: 1.0rem;
+    height: 1rem;
+    margin: 0 1vw;
+}
+.design-text {
+    font-size: 0.8rem;
+    color: #828282;
+    margin: 1rem 0;
+	text-overflow: -o-ellipsis-lastline;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	line-clamp: 3;
+	-moz-line-clamp: 3;
+	-webkit-box-orient: vertical;
+}
+.item-nav-list{
+	width:100%;
+	height:6rem;
+	display:flex;
+	margin:0.6rem 0 0
+}
+.item-nav-list img{
+	width:33.3%
+}

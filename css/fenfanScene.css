@@ -1,0 +1,355 @@
+.app-wrapper{
+	margin: 0 auto 2rem;
+}
+.app-navbar{
+	width:100%;
+	height:3rem;
+	background: #fff;
+	display:flex;
+	align-items: center;
+}
+.app-navbar-sec{
+	flex:1;
+	display:flex;
+	justify-content: center;
+	font-size:0.8rem;
+	height:2.9rem;
+	align-items: center;
+	cursor:pointer
+}
+.app-navbar-sec img{
+	width:0.6rem;
+	height:0.6rem;
+	margin:0 2vw
+}
+.app-pic-list {
+    position: relative;
+    padding: 0 0.5rem;
+    overflow: hidden;
+}
+.app-pic-cell,.app-pic-cell-1,.app-pic-cell-2{
+    position: relative;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+.app-pic-cell{
+    height: 39rem;	
+}
+.app-pic-cell-1{
+	height: 28rem;
+}
+.app-pic-cell-2{
+	height: 26rem;
+}
+.app-pic-cell-1 .geo-transform,.app-pic-cell-2 .geo-transform{
+	height:6rem
+}
+.app-pic-cell img,.app-pic-cell-1 img,.app-pic-cell-2 img{
+    width: 100%;
+}
+.geo-transform {
+    width: 93vw;
+    height: 7rem;
+    background: #fff;
+    box-sizing: border-box;
+    padding: 1rem 2rem;
+    position: absolute;
+    left: 1.0vw;
+    bottom: 0;
+}
+.geo-transform .geo-label {
+    font-size: 1.0rem;
+    height: 3rem;
+}
+.geo-transform label {
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    font-size: 1.0rem;
+    color: #1a1712;
+}
+.geo-transform .label-content {
+    width: 100%;
+    height: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #757575;
+}
+.label-content .label-cell {
+    width: 60vw;
+    display: flex;
+    height: 2rem;
+    align-items: center;
+}
+.geo-transform span {
+    font-size: 0.8rem;
+}
+.label-cell img {
+    width: 1.0rem;
+    height: 1.0rem;
+    margin-right: 2vw;
+}
+.label-cell img:nth-child(2) {
+    margin-left: 5vw;
+}
+.read-more {
+    width: 100vw;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+.read-more img {
+    width: 30vw;
+}
+.other-point {
+    margin: 3rem 0 1rem;
+}
+.app-navdetail{
+	width:100%;
+	height:auto;
+	position:absolute;
+	left:0;
+	box-sizing: border-box;
+	padding:0 0.5rem;
+}
+.app-nav-list{
+	width:100%;
+	background: #fff;
+	box-sizing: border-box;
+	padding:1rem 4vw;
+	display:flex;
+	flex-wrap: wrap;
+}
+.list-block{
+	width:22vw;
+	height:3rem;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+}
+.list-block i{
+	width:18vw;
+	height:2rem;
+	font-style: normal;
+	font-size:0.8rem;
+	display:flex;
+	align-items: center;
+	justify-content: center;	
+}
+.list-block span{
+	font-size:0.8rem;	
+}
+.color-block{
+	width:1.5rem;
+	height:1.5rem;
+	border:1px solid #ddd;
+	margin-right:1vw;
+	display:flex;
+	align-items: center;
+	justify-content: center;	
+}
+.color-block-content{
+	width:1.0rem;
+	height:1.0rem;
+	display:flex;
+}
+.silvery{
+	background-color: rgb(223, 223, 223);
+}
+.gold{
+	background-color: rgb(241, 211, 162);
+}
+.coppery{
+	background-color: rgb(184, 123, 107);
+}
+.y-coppery{
+	background-color: rgb(191, 173, 111);
+}
+.orange{
+	background-color: rgb(255, 156, 73);
+}
+.color-active{
+	border:1px solid #333
+}
+.list-block .i-active{
+	color:#9c8059;
+	border:1px solid #9c8059
+}
+.navbar-active{
+	color:#9c8059;
+}
+.app-choice-E{
+	max-width: 100%;
+	min-width:100%;
+	height: 3rem;
+	position:relative;
+	box-sizing: border-box;
+	overflow-x:scroll;
+}
+.app-nav-E{
+	width:278vw;
+	height:3rem;
+	display:block;
+	line-height: 3rem;
+	box-sizing: border-box;
+	padding:0 4vw
+}
+.app-nav-E span{
+	display:block;
+	float:left;
+	width:10vw;
+	font-size:0.8rem;
+	text-align: center;
+}
+.app-choice-E::-webkit-scrollbar { 
+	display: none; height: 0 !important; 
+}
+.app-choice-E:after{
+	position: absolute;
+	left: 0.5rem;
+	right: 0.5rem;
+	bottom: 0;
+	height: 1px;
+	content: '';
+	background: #acacac;
+	transform: scaleY(.5);
+	-webkit-transform: scaleY(.5);
+}
+.scene-gold{
+	color: #9c8059
+}
+.heart-card img {
+    width: 1rem;
+    height: 1rem;
+}
+.app-nav-submit{
+	width:100%;
+	height:4rem;
+	box-sizing: border-box;
+	padding:0.5rem 4vw;
+	position:relative;
+	background: #fff;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+}
+.app-nav-submit:before{
+	position:absolute;
+	left:4vw;
+	right:4vw;
+	top:0;
+	height:1px;
+	content:'';
+	background: #ddd;
+	transform: scaleY(.5);
+	-webkit-transform: scaleY(.5);
+}
+.app-nav-submit div{
+	width:36vw;
+	height:2.4rem;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	cursor:pointer
+}
+.empty-option{
+	margin: .4rem .133333rem .4rem .4rem;
+	background: #f4f4f4;
+	font-family: PingFangSC-Light;
+	font-size: .8rem;
+	color: #999;
+	letter-spacing: 0;
+	line-height: 1.066667rem;	
+}
+.ok-option{
+	margin: .4rem .4rem .4rem .133333rem;
+	background: #222;
+	font-family: PingFangSC-Light;
+	font-size: .8rem;
+	color: #fff;
+	letter-spacing: 0;
+	line-height: 1.066667rem;
+}
+.menu-list-cells{
+	position:relative;
+	padding:1rem 0.5rem;
+	overflow:hidden;
+}
+.menu-list-cell{
+	position:relative;
+	padding:0.5rem 4vw;
+	overflow:hidden;
+	background: #fff;
+}
+.underbar{
+	box-shadow: 0 2px #10443f;
+}
+.menu-list-cell:after{
+	position:absolute;
+	left:4vw;
+	right:4vw;
+	bottom:0;
+	height:1px;
+	content:'';
+	background: #ddd;
+	transform: scaleY(.5);
+	-webkit-transform: scaleY(.5);	
+}
+.menu-list-cell .menu-arrow{
+	position:relative;
+	display:flex;
+	align-items: center;
+}
+.menu-list-cell  .menu-arrow:after{
+	content: " ";
+	display: inline-block;
+	width: 0.6rem;
+	height: 0.6rem;
+	border-top: 1px solid #6c6c6c;
+	border-right: 1px solid #6c6c6c;
+	transform: rotate(45deg);
+	position: absolute;
+	top: 40%;
+	right: 2px;	
+}
+.menu-list-cell .menu-arrow img{
+	width:20%;
+	margin-right:5vw
+}
+.menu-list-cell .menu-arrow label{
+	font-size:1.0rem
+}
+.menu-list-cell:last-child:after{
+	display:none
+}
+#menu-1-list{
+	display:flex;
+	flex-wrap: wrap;
+	padding:1rem 0.5rem;
+	box-sizing: border-box;
+}
+#menu-1-list .app-pic-list{
+	width:49%;
+	padding:0
+}
+.app-pic-list:nth-child(2n+1) {
+    margin-right: 2%;
+}
+#menu-1-list .app-pic-list .app-pic-cell-2 {
+    height: 13.5rem;
+}
+#menu-1-list .app-pic-list .geo-transform{
+	width: 45vw;
+	height:4rem;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	padding:0
+}
+#menu-1-list .app-pic-list .geo-transform img{
+	height:3rem;
+	width:5rem	
+}

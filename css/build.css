@@ -1,0 +1,99 @@
+.app-describe{
+	position:relative;
+	padding:1.5rem;
+	overflow:hidden;
+	display:flex;
+	flex-direction: column;
+}
+.app-title{
+	width:100%;
+	height:3.2rem;
+	padding:0 0.5rem;
+	box-sizing: border-box;
+}
+.app-title{
+	display:flex;
+	flex-direction: column;
+}
+.app-title label{
+	font-size:1.1rem;
+	font-weight:600
+}
+.app-tag{
+	font-size:0.8rem;
+	color:#4e4e4e;
+	width:100%;
+	height:2rem;
+	padding:0 0.5rem;
+	box-sizing: border-box;
+	display:flex;
+	align-items: center;
+}
+.app-tag span{
+	margin-right:0.3rem
+}
+.app-contents{
+	width:100%;
+	margin:1.5rem 0;
+	font-size:0.8rem;
+	height:3rem;
+	overflow:hidden
+}
+.other-points{
+	padding:0.5rem;
+	position:relative;
+	overflow:hidden;
+	margin:0.5rem 0
+}
+.app-btn{
+	width:100%;
+}
+.btn{
+	padding:0.5rem 1.2rem;
+	border:1px solid #595959
+}
+.app-pic-list{
+	position:relative;
+	padding:0 0.5rem;
+	overflow:hidden;
+}
+.app-pic-list .swiper-containers{
+   width:100%;
+   overflow:hidden
+}
+.app-pic-cell {
+    position: relative;
+    width: 100%;
+    height: 25rem;
+    margin-bottom: 1rem;
+}
+.app-pic-cell img{
+	width:100%;
+}
+.geo-transform {
+    width: 93vw;
+    height: 4.4rem;
+    background: #fff;
+    box-sizing: border-box;
+    padding: 0.5rem 2rem;
+    position: absolute;
+    left: 1.6vw;
+    bottom: 0;
+}
+.geo-transform span{
+	font-size: 0.8rem;
+}
+.geo-transform .label-content {
+    width: 100%;
+    height: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.geo-transform label{
+	height:2rem;
+	display:flex;
+	align-items: center;
+	font-size:1.0rem;
+	color:#1a1712
+}
