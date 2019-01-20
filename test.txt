@@ -1,0 +1,22 @@
+case.html		接口请求失败没有数据
+index.html		有数据但是部分按钮没有绑定事件
+personGift.html		点击按钮没有数据所以看不到页面有内容的效果
+personNew.html 		邀请好友按钮无效
+personWish.html		按钮无效
+power.html		按钮无效
+powerDesigner.html	接口请求失败，看不到内容
+
+
+casetwo.html		静态页面
+RedefiningStrength.html	静态页面
+searchY.html		静态页面
+jobDetail.html		页面无数据
+caseDetail.html		无数据无法查看该页面
+buildDetail.html 	无数据无法查看该页面
+buildlist.html 		主内容区域无数据以及部分按钮事件没绑定
+
+
+
+
+
+
