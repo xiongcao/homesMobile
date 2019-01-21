@@ -246,11 +246,17 @@ body {
   	justify-content: center;
   	font-size: 0.5rem;
 }
-.bottom-nav span{
+.bottom-nav a{
   	width:15vw;
   	display:flex;
-  	justify-content: center;
+	justify-content: center;
+	color: #ffffff;
 }
+/* .bottom-nav span{
+  	width:15vw;
+  	display:flex;
+	justify-content: center;
+} */
 .bottom-down{
 	position:relative;
 	padding: 0;
@@ -303,6 +309,20 @@ body {
   	border-radius: 0.6rem;
   	margin-bottom:0.9rem
 }
+
+.showcode{
+	position:absolute;
+	display:none;
+	bottom:0.2rem;
+	width: 3.3rem;
+	height:3.3rem;
+}
+.showcode img{
+	border-radius: 0;
+	width: 3.3rem;
+	height:3.3rem
+}
+
 .nav-login{
 	position: relative;
 	z-index: 10;

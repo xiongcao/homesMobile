@@ -69,61 +69,19 @@
 	        		<label class="person-spread">我的心愿单</label>
 			    	<div class="ps-choice-1">
 			    		<button class="btn btn-gold-large">已收录5个心愿</button>
-			    		<button class="btn btn-black-large">探索心愿之旅</button>
+			    		<button class="btn btn-black-large goToHome">探索心愿之旅</button>
 			    	</div>
 	        	</div>
 	        </div>
         </div>
         <!-- 内容区 start	 -->
-		<div class="other-point">
+		<div class="other-point case-header">
 			<span class="relate">案例心愿单</span>
 			<div class="other-line"></div>
 		</div>
-        <div class="app-content">
-			<div class="app-pic-list">
-				<div class="app-pic-cell">
-					<a href="buildList.html">
-					    <img src="img/build_2.png" />
-					</a>
-					<div class="geo-transform">
-						<span>曼哈顿</span>
-						<div class="label-content">
-						    <label>顶层豪宅会所</label>
-						    <span>立即咨询</span>
-						</div>
-					</div>
-				</div>
-			</div>	 
-			<div class="app-pic-list">
-				<div class="app-pic-cell">
-					<a href="buildList.html">
-					    <img src="img/build_2.png" />
-					</a>
-					<div class="geo-transform">
-						<span>曼哈顿</span>
-						<div class="label-content">
-						    <label>顶层豪宅会所</label>
-						    <span>立即咨询</span>
-						</div>
-					</div>
-				</div>
-			</div>	 
-			<div class="app-pic-list">
-				<div class="app-pic-cell">
-					<a href="buildList.html">
-					    <img src="img/build_2.png" />
-					</a>
-					<div class="geo-transform">
-						<span>曼哈顿</span>
-						<div class="label-content">
-						    <label>顶层豪宅会所</label>
-						    <span>立即咨询</span>
-						</div>
-					</div>
-				</div>
-			</div>	         	
+        <div class="app-content" id="caseWishContent">
         </div>
-		<div class="other-point">
+		<div class="other-point house-header">
 			<span class="relate">楼盘心愿单</span>
 			<div class="other-line"></div>
 		</div>
@@ -170,7 +128,13 @@
 					</div>
 				</div>
 			</div>	 
-        </div>
+		</div>
+		<div class="other-point designer-header">
+			<span class="relate">设计师心愿单</span>
+			<div class="other-line"></div>
+		</div>
+		<div class="app-content" id="designer-lid">
+		</div>
         <!-- 内容区 end	 -->					
 		<div class="other-point">
 			<span class="relate">Other  related</span>
@@ -222,11 +186,65 @@
         		</div>
                 <span class="check-tips">1小时之内只能发送3次</span>	        		
         		<div class="login-bottom">
-        			<button class="btn-submit" id="login">登录</button>
+        			<button class="btn-submit" id="logins">登录</button>
         		</div>
         	</div>
         </div>
-    </div>
+	</div>
+	<script id="caseListTemplate" type="text/html">
+    	{{each data}}
+			<div class="app-pic-list">
+				<div class="app-pic-cell">
+					<a href="buildList.html">
+						<img src="img/build_2.png" />
+					</a>
+					<div class="geo-transform">
+						<span>曼哈顿</span>
+						<div class="label-content">
+							<label>顶层豪宅会所</label>
+							<span>立即咨询</span>
+						</div>
+					</div>
+				</div>
+			</div>	 
+		{{/each}} 
+	</script>
+	<script id="houseListTemplate" type="text/html">
+    	{{each data}}
+			<div class="app-pic-list">
+				<div class="app-pic-cell">
+					<a href="buildList.html?id={{$value.id}}">
+						<img src="{{pubUrl + $value.logo}}" />
+					</a>
+					<div class="geo-transform">
+						<span>{{$value.address}}</span>
+						<div class="label-content">
+							<label>{{$value.name}}</label>
+							<span>立即咨询</span>
+						</div>
+					</div>
+				</div>
+			</div>	 
+		{{/each}} 
+	</script>
+	<script id="designerListTemplate" type="text/html">
+		{{each data}}
+		<div class="app-pic-list">
+			<div class="app-pic-cell">
+				<a href="powerDesigner.html?id={{$value.designerid}}">
+					<img src="{{pubUrl + $value.information.headphoto}}" />
+				</a>
+				<div class="geo-transform">
+					<span>{{$value.information.name}}</span>
+					<div class="label-content">
+						<label>{{$value.information.departmentId}}</label>
+						<span>立即咨询</span>
+					</div>
+				</div>
+			</div>
+		</div>	 
+		{{/each}} 
+	</script>
 	<script type="text/javascript" src="js/zepto.min.js"></script>
 	<script src="js/swiper.min.js"></script>
 	<script src="js/template-web.js"></script>
@@ -243,10 +261,100 @@
 		    },
 			autoplay:1000
 		});
+		
+		if(userInfor){
+			//案例心愿单
+			var caseHtml = template('caseListTemplate',findCaseAll(userInfor.uid));
+			$("#caseWishContent").html(caseHtml);
+			
+			//楼盘心愿单
+			var houseHtml = template('houseListTemplate',findHouseAll(userInfor.uid));
+			$("#house-lid").html(houseHtml);
+
+			//设计师心愿单
+			var designerHtml = template('designerListTemplate',findDesignerAll(userInfor.uid));
+			$("#designer-lid").html(designerHtml);
+		}else{
+			$(".case-header").hide();
+			$(".house-header").hide();
+			$(".designer-header").hide();
+		}
+
+		/* 探索心愿之旅 */
+		$(".goToHome").on("click",function(){
+			window.location.href = pubUrl + "/homesMobile/index.html";
+		})
+
 		/*心愿单*/
-		house_collect(userInfor.uid);
+		userInfor && house_collect(userInfor.uid);
         /*底部菜单*/
-       footerImg()
+	   footerImg()
+	   
+	   //查询所有案例
+		function findCaseAll(uid){
+			var list = {pubUrl:pubUrl};
+			$.ajax({
+				type: 'post',
+				data:{uid:uid},
+				url: pubUrl + '/case/collect/all',
+				dataType: 'json',
+				async: false,
+				success: function(data){
+					if(data.length==0){
+						$(".case-header").hide();
+					}
+					list.data = data
+				},
+				error: function(err){
+					console.log(err)
+				}
+			});	
+			return list
+		}
+
+		//查询所有楼盘
+		function findHouseAll(uid){
+			var list = {pubUrl:pubUrl};
+			$.ajax({
+				type: 'post',
+				data:{uid:uid},
+				url: pubUrl + '/center/house_collect_list',
+				dataType: 'json',
+				async: false,
+				success: function(data){
+					if(data.length==0){
+						$(".house-header").hide();
+					}
+					list.data = data
+				},
+				error: function(err){
+					console.log(err)
+				}
+			});	
+			return list
+		}
+	
+		//查询所有设计师
+		function findDesignerAll(uid){
+			var list = {pubUrl:pubUrl};
+			$.ajax({
+				type: 'post',
+				data:{uid:uid},
+				url: pubUrl + '/designer/collect/all',
+				dataType: 'json',
+				async: false,
+				success: function(data){
+					if(data.length==0){
+						$(".designer-header").hide();
+					}
+					list.data = data;
+				},
+				error: function(err){
+					console.log(err)
+				}
+			});	
+			return list
+		}
 	</script>
 </body>
 </html>

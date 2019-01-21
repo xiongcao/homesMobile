@@ -68,7 +68,7 @@
 	        	<div class="app-person">
 	        		<img src="img/person_pic.png" class="person-head" />
 	        		<label class="person-spread">我的心愿单</label>
-	        		<p class="person-code" id="qr">全部消息1条</p>
+	        		<p class="person-code" id="message">全部消息0条</p>
 	        	</div>
 	        </div>
         </div>
@@ -115,9 +115,23 @@
     <div class="weui-skin_android" id="androidActionsheet" style="display: none">
         <div class="weui-mask"></div>
         <div class="weui-actionsheet">
-        	<div class="shutdown">
-        		<img src="img/close.png"  />
-        	</div>
+			<div class="shutdown">
+				<img src="img/close.png"  />
+			</div>
+			<div class="qr-window">  
+				<img src="img/person_qr.png" class="qr-code" />
+				<div class="qr-content">
+					<img src="img/logo.png" />
+					<p>睿缔建筑,为中国精英人群实现居住理想</p>
+				</div>
+				<div class="qr-down">
+					<img src="img/person_code.png" />
+					<div class="qr-list">
+						<p>我的专属二维码</p>
+						<p>保存图片,发送给好朋友有惊喜哦</p>
+					</div>
+				</div>
+			</div>
         	<div class="login-window">
         		<div class="login-top">
         			<label>Hi,Friends!</label>
@@ -136,7 +150,7 @@
         		</div>
                 <span class="check-tips">1小时之内只能发送3次</span>	        		
         		<div class="login-bottom">
-        			<button class="btn-submit" id="login">登录</button>
+        			<button class="btn-submit" id="logins">登录</button>
         		</div>
         	</div>
         </div>
@@ -184,19 +198,24 @@
 			autoplay:1000
 		});
         /*点击关闭*/
-		$('.cell-white-close').on('click',function(){
-			$(this).parent('.center-cell-white').remove()
+		$('.person-new').on('click',".cell-white-close",function(){
+			$(this).parent().remove()
+			$("#message").text("全部消息0条")
 		});
-        /*个人信息*/
+        
+		/*个人信息*/
         (userInfor == undefined) ? ($('#loginOut').fadeOut(),$('#login').fadeIn(),$('.person-head').attr('src','img/person_pic.png')) : ($('#login').fadeOut(),$('#loginOut').fadeIn(),$('.person-head').attr('src',pubUrl+userInfor.head_url));
         $('#loginOut').on('click',function(){
         	localStorage.clear();
         	location.reload()
         });
-        personInfor(userInfor.uid);
-        /*消息*/
-        var newHtml = template('news',personNews(userInfor.uid));
-        $(".person-new").html(newHtml);
+		if(userInfor){
+			personInfor(userInfor.uid);
+			/*消息*/
+			var newHtml = template('news',personNews(userInfor.uid));
+			$(".person-new").html(newHtml);
+		}
+        
         /*底部菜单*/
        footerImg()
 	</script>

@@ -589,6 +589,7 @@ var personNews = function(id){
 		async: false,
 		success: function(data){
 			console.log(data);
+			$("#message").text("全部消息"+data.length+"条")
 			list.data = data
 		},
 	    error: function(err){

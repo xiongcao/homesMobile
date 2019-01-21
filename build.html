@@ -9,7 +9,8 @@
     <link href="css/swiper.min.css" rel="stylesheet" media="all" />
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/exchange.css" />
-    <link rel="stylesheet" href="css/build.css" />
+	<link rel="stylesheet" href="css/build.css" />
+	<link rel="stylesheet" href="css/dropload.css" />
     <style type="text/css">
         .other-point{
             margin:4rem 0 2rem
@@ -120,13 +121,13 @@
 				</div>
 			</div>				-->
 		</div>						
-		<div class="other-point">
+		<div class="other-point" style="display: none">
 			<span class="relate">Other  related</span>
 			<div class="other-line"></div>
 		</div>
-		<div class="category">
+		<div class="category" style="display: none">
 		</div>
-	    <div class="footer">
+	    <div class="footer" style="display: none">
 	    	<img src="img/bottom-logo.png" class="footer-logo" />
 		  	<div class="bottom-nav">
 		  	    <span>签约合作</span>
@@ -229,6 +230,7 @@
 	<script type="text/javascript" src="js/zepto.min.js"></script>
 	<script src="js/swiper.min.js"></script>
 	<script src="js/template-web.js"></script>
+	<script src="js/dropload.min.js"></script>
 	<script src="js/common.js"></script>
 	<script src="js/header.js?v=1.0.1"></script>
 	<script type="text/javascript">
@@ -250,7 +252,6 @@
 			$('.swiper-wrapper').append(html)
         }); 
         /*列表*/
-        console.log(build(1));
         $.each(build(1),function(i,v){
         	var html = '<div class="app-pic-list">'
 						+'<div class="app-pic-cell">'
@@ -269,7 +270,77 @@
 			$('#app-content').append(html)
         });        
         /*底部菜单*/
-       footerImg()
+	   footerImg()
+	   
+	   /*下拉加载*/
+	   function selectMore(el){
+       	    var pageNum = 1;
+			   var result = '';
+       	    el.dropload({
+		        scrollArea : window,
+		        domUp: {
+		            domClass   : 'dropload-up',
+		            domRefresh : '<div class="dropload-refresh">↓下拉刷新</div>',
+		            domUpdate  : '<div class="dropload-update">↑释放更新</div>',
+		            domLoad    : '<div class="dropload-load"><span class="loading"></span>加载中...</div>'
+		        },   
+		        distance: 1000,
+		        loadDownFn : function(me){     
+		            pageNum++;            
+		            var result = '';
+		            $.ajax({
+		                type: "post",
+		                url: pubUrl + '/house',
+		                async:true,
+		                data:{
+							page:pageNum
+		                },
+		                success: function(res){  
+							var lists = res.data;
+		                    var arrLen = lists.length;        		                    
+		                    if( arrLen>0 ){
+		                        for(var i = 0; i < arrLen; i++){
+		                            result += '<div class="app-pic-list">' //html模板，你懂得
+												+'<div class="app-pic-cell">'
+													+'<a href="caseDetail.html?id='+lists[i].id+'">'
+														+'<img src="'+pubUrl+lists[i].logo+'" />'
+													+'</a>'
+													+'<div class="geo-transform">'
+														+'<span>'+lists[i].address+'</span>'
+														+'<div class="label-content">'
+														    +'<label>'+lists[i].name+'</label>'
+														    +'<span>立即咨询</span>'
+														+'</div>'
+													+'</div>'
+												+'</div>'
+											+'</div>';
+		                        };                        
+		                    }else{
+		                        // 锁定
+		                        me.lock();
+		                        // 无数据
+								me.noData();
+								$(".other-point").fadeIn(500);
+								$(".category").fadeIn(500);
+								$(".footer").fadeIn(500);
+		                    }    
+		                    setTimeout(function(){
+		                        // 插入数据到页面，放到最后面
+		                        el.find($(".lists")).append(result);
+		                        // 每次数据插入，必须重置
+		                        me.resetload();
+		                    },500);            
+		                },
+		                error: function(xhr, type){
+		                    alert('Ajax error!');
+		                    // 即使加载出错，也得重置
+		                    me.resetload();
+		                }
+		            });    
+		        }       	    	
+       	    })
+		};
+		selectMore($('#app-content'));
 	</script>
 </body>
 </html>

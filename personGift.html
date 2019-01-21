@@ -143,27 +143,34 @@
         		</div>
                 <span class="check-tips">1小时之内只能发送3次</span>	        		
         		<div class="login-bottom">
-        			<button class="btn-submit" id="login">登录</button>
+        			<button class="btn-submit" id="logins">登录</button>
         		</div>
         	</div>
         </div>
     </div>
-    <script id="gift" type="text/html">
-        {{each data}}
-	    	<div class="ps-main-center-cell center-cell-black">
-	    		<div class="cell-black-inner">
-	    			<div class="cell-black-left">
-	    				<label class="cell-black-title all-gold">Redefining Hibitat</label>
-	    				<label class="cell-price">¥<span class="price-big">{{$value.money}}</span></label>
-	    				<p class="cell-black-p">累计邀请{{$value.number}}位好友注册成为会员可用,不能叠加使用</p>
-	    				<p class="cell-black-p">有效期 {{$value.start_time}} 至 {{$value.end_time}}</p>
-	    			</div>
-	    		</div>
-	    		<div class="use-certify">
-	    			已使用
-	    		</div>
-	    	</div>	         
-        {{/each}} 
+	<script id="gift" type="text/html">
+		{{if data.length==0}}
+			<div class="cell-black-null">
+				<img src="img/a.png"/>
+				<p>没有可用礼券哦</p>
+			</div>
+		{{else}}
+			{{each data}}
+				<div class="ps-main-center-cell center-cell-black">
+					<div class="cell-black-inner">
+						<div class="cell-black-left">
+							<label class="cell-black-title all-gold">Redefining Hibitat</label>
+							<label class="cell-price">¥<span class="price-big">{{$value.money}}</span></label>
+							<p class="cell-black-p">累计邀请{{$value.number}}位好友注册成为会员可用,不能叠加使用</p>
+							<p class="cell-black-p">有效期 {{$value.start_time}} 至 {{$value.end_time}}</p>
+						</div>
+					</div>
+					<div class="use-certify">
+						已使用
+					</div>
+				</div>	         
+			{{/each}} 
+		{{/if}}
     </script>
 	<script type="text/javascript" src="js/zepto.min.js"></script>
 	<script src="js/swiper.min.js"></script>
@@ -181,9 +188,8 @@
 		    },
 			autoplay:1000
 		});
-//		personGift(userInfor.uid,2);
-//      var giftHtml = template('gift',personGift(userInfor.uid,2));
-//      $(".app-contents").html(giftHtml);
+		var giftHtml = template('gift',personGift(userInfor.uid,2));
+		$(".app-contents").html(giftHtml);
         /*点击切换*/
         $('.btn').on('click',function(){
         	var id = $(this).attr('id');

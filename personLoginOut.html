@@ -147,7 +147,7 @@
         		</div>
                 <span class="check-tips">1小时之内只能发送3次</span>	        		
         		<div class="login-bottom">
-        			<button class="btn-submit" id="login">登录</button>
+        			<button class="btn-submit" id="logins">登录</button>
         		</div>
         	</div>
         </div>
@@ -174,46 +174,14 @@
 		    },
 			autoplay:1000
 		});
-		/*分享二维码*/
-        var $androidActionSheet = $('#androidActionsheet');
-        var $androidMask = $androidActionSheet.find('.weui-mask');
-        var $showcode = $('.showcode');
-        
-        $("#qr").on('click', function(){
-            $androidActionSheet.fadeIn(200);
-            $androidActionSheet.find('.qr-window').css('display','block').next().css('display','none');
-            $androidMask.on('click',function () {
-                $androidActionSheet.fadeOut(200);
-            });
-            $('.shutdown').on('click',function () {
-                $androidActionSheet.fadeOut(200);
-            });
-        });
-        $("#login").on('click', function(){
-            $androidActionSheet.fadeIn(200);
-            $androidActionSheet.find('.login-window').css('display','block').prev().css('display','none');
-            $('.icon-guanbi').animate({
-					opacity:'0'
-				},'500','ease-in-out').siblings().animate({
-					opacity:'1'
-				},'500');
-				$('.slide-navlist').prop('id','1').animate({
-					marginTop:'-40rem'
-				},'500','ease-in-out');
-            $androidActionSheet.find('.login-window').css('display','block').next().css('display','none');
-            $androidMask.on('click',function () {
-                $androidActionSheet.fadeOut(200);
-            });
-            $('.shutdown').on('click',function () {
-                $androidActionSheet.fadeOut(200);
-            });
-        });
         /*个人信息*/
         (userInfor == undefined) ? ($('#loginOut').fadeOut(),$('#login').fadeIn(),$('.person-head').attr('src','img/person_pic.png')) : ($('#login').fadeOut(),$('#loginOut').fadeIn(),$('.person-head').attr('src',pubUrl+userInfor.head_url));
-        personInfor(userInfor.uid);
-        /*好友注册*/
-        var ruidHtml = template('person',personInfor(userInfor.uid));
-        $(".app-contents").html(ruidHtml);
+		if(userInfor){
+			personInfor(userInfor.uid);
+			/*好友注册*/
+			var ruidHtml = template('person',personInfor(userInfor.uid));
+			$(".app-contents").html(ruidHtml);
+		}
         /*底部菜单*/
        footerImg()
 	</script>

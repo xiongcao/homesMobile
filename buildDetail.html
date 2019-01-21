@@ -350,7 +350,7 @@
         });
         var designData = buildcontent(GetQueryString('id'));
         /*户型详情*/
-        buildcontent(GetQueryString('id'));
+        // buildcontent(GetQueryString('id'));
         $('.build-L').text(designData.house_type.name);
 		$.each(designData.floor,function(i,val){
 			var html = '<span id="'+val+'">'+val+'</span>';
@@ -365,16 +365,19 @@
 		$('#second-choice span:nth-child(1)').addClass('actives');
 		$('.build-list-right img').attr({'src':pubUrl + buildPlane(GetQueryString('id'),1)[0].img,'width':'100%'});
 		/*户型选择*/
-		var list = null;
+		var list = [];
 		$('#first-choice span').on('click',function(){
 			var num = $(this).attr('id');
 			$('#second-choice').empty();
-			$.each(buildPlane(GetQueryString('id'),num),function(i){
+			var _tmpData = buildPlane(GetQueryString('id'),num);
+			// list = _tmpData;
+			$.each(_tmpData,function(i,e){
 				var html = '<span id="'+(i + 1)+'">'+(i + 1)+'</span>';
 				$('#second-choice').append(html)
 			});	
 			$('#second-choice span:nth-child(1)').addClass('actives');
 			$(this).addClass('actives').siblings().removeClass('actives')
+			// $('.build-list-right img').attr('src',pubUrl + list[0].img)
 		});
 		$('#second-choice span').on('click',function(){
 			var num = parseInt($(this).attr('id')) - 1;

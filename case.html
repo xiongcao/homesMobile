@@ -114,14 +114,13 @@
 				</div>
 			</div>			-->
 		</div>
-		<div class="other-point">
+		<div class="other-point" style="display: none">
 			<span class="relate">Other  related</span>
 			<div class="other-line"></div>
 		</div>
-		<div class="category">
-
+		<div class="category" style="display: none">
 		</div>	
-	    <div class="footer">
+	    <div class="footer" style="display: none">
 	    	<img src="img/bottom-logo.png" class="footer-logo" />
 		  	<div class="bottom-nav">
 		  	    <span>签约合作</span>
@@ -320,7 +319,8 @@
         function selectMore(el,type){
        	    var pageNum = 1;
        	    var result = '';
-       	    self.moreFund = el.dropload({
+       	    // self.moreFund = el.dropload({
+       	    el.dropload({
 		        scrollArea : window,
 		        domUp: {
 		            domClass   : 'dropload-up',
@@ -328,8 +328,8 @@
 		            domUpdate  : '<div class="dropload-update">↑释放更新</div>',
 		            domLoad    : '<div class="dropload-load"><span class="loading"></span>加载中...</div>'
 		        },   
-		        distance: 2000,
-		        loadDownFn : function(me){          
+		        distance: 1000,
+		        loadDownFn : function(me){     
 		            pageNum++;            
 		            var result = '';
 		            console.log(pageNum);
@@ -342,8 +342,7 @@
 							page:pageNum
 		                },
 		                success: function(res){  
-		                	console.log(res);
-		                    var lists = res.data;
+							var lists = res.data;
 		                    var arrLen = lists.length;        		                    
 		                    if( arrLen>0 ){
 		                        for(var i = 0; i < arrLen; i++){
@@ -352,7 +351,7 @@
 													+'<a href="caseDetail.html?id='+lists[i].id+'">'
 														+'<img src="'+pubUrl+lists[i].appbig+'" />'
 													+'</a>'
-													+'<img src="img/thumbs_up_1.png" class="thumb_up" name="'+v.id+'" />'
+													+'<img src="img/thumbs_up_1.png" class="thumb_up" name="'+lists[i].id+'" />'
 													+'<div class="geo-transform">'
 														+'<span>'+lists[i].address+'</span>'
 														+'<div class="label-content">'
@@ -367,7 +366,10 @@
 		                        // 锁定
 		                        me.lock();
 		                        // 无数据
-		                        me.noData();                  
+								me.noData();
+								$(".other-point").fadeIn(500);
+								$(".category").fadeIn(500);
+								$(".footer").fadeIn(500);
 		                    }    
 		                    setTimeout(function(){
 		                        // 插入数据到页面，放到最后面
@@ -384,8 +386,9 @@
 		            });    
 		        }       	    	
        	    })
-        };
-        selectMore($('#app-content'),getUrl)
+		};
+		(getUrl == '57') ? selectMore($('#app-content'),0) : selectMore($('#app-content'),1);
+        
 	</script>
 </body>
 </html>
