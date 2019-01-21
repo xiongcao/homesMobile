@@ -315,6 +315,28 @@ var aboutCase = function(id){
 	return list	
 }
 
+/** 楼盘相关案例 */
+var houseCase = function(hid,page){
+	var list = [];
+	$.ajax({
+		type: 'post',
+		url: pubUrl + '/house/type/case?page='+page,
+		data: {
+			hid: hid
+		},
+		dataType: 'json',
+		async: false,
+		success: function(data){
+			console.log(data);
+			list = data.data
+		},
+	    error: function(err){
+	     	console.log(err)
+	    }
+	});
+	return list	
+}
+
 var aboutDesigner = function(page,id){
 	var list = [];
 	$.ajax({

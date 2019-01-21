@@ -294,7 +294,8 @@
             <span>分享</span>
         </div>    	
     </script>
-    <script id="caseList" type="text/html">
+	<script id="caseList" type="text/html">
+		{{if data.length!=0}}
         <nav class="middle-nav">
         	{{each data}}
                 <span id="{{$index}}" data-id="{{$value.caseid}}">{{$value.title}}</span>
@@ -316,7 +317,8 @@
 			        </div>
 			    {{/if}}
 	        {{/each}}        	
-        </div>
+		</div>
+		{{/if}}
         <div class="middle-button">
             <i>您可能喜欢</i>
             <span class="action" data-id="" id="tab-a">相关案例</span>
@@ -393,8 +395,8 @@
 		var designer = template('designer',designData);
 		$(".design").html(designer);
 		/*案例列表*/
-		console.log(caseList('59'));
-		var caseList = template('caseList',caseList(GetQueryString('id')));
+		var _temCaseList = caseList(GetQueryString('id'));
+		var caseList = template('caseList',_temCaseList);
 		$(".bottom-content-cell").html(caseList);
 		$(document).on('click','.middle-nav span',function(){
 			var _this = $(this);
@@ -407,7 +409,7 @@
 			})
 		})
 		/*内容*/
-		aboutCase(1);
+		// aboutCase(1);
 		var data = aboutCase(1);
 		$.each(data,function(i,v){
 			var html = '<div class="app-pic-list">'
@@ -453,24 +455,23 @@
 				})
 			}else{
 				data = aboutCase(1,$('#tab-a').attr('data-id'));
-				console.log(data);
-//				$.each(data,function(i,v){
-//					var html = '<div class="app-pic-list">'
-//									+'<div class="app-pic-cell">'
-//									    +'<a href="casedatail.html?id='+v.id+'">'
-//										+'<img src="'+pubUrl+v.photoUrlA+'" />'
-//										+'</a>'
-//										+'<div class="geo-transform">'
-//											+'<span>'+v.departmentId+'</span>'
-//											+'<div class="label-content">'
-//											    +'<label>'+v.name+'</label>'
-//											    +'<span>立即咨询</span>'
-//											+'</div>'
-//										+'</div>'
-//									+'</div>'
-//								+'</div>';
-//					$('#content-area').append(html)
-//				})					
+				$.each(data,function(i,v){
+					var html = '<div class="app-pic-list">'
+									+'<div class="app-pic-cell">'
+									    +'<a href="casedatail.html?id='+v.id+'">'
+										+'<img src="'+pubUrl+v.appsmall+'" />'
+										+'</a>'
+										+'<div class="geo-transform">'
+											+'<span>'+v.address+'</span>'
+											+'<div class="label-content">'
+											    +'<label>'+v.name+'</label>'
+											    +'<span>立即咨询</span>'
+											+'</div>'
+										+'</div>'
+									+'</div>'
+								+'</div>';
+					$('#content-area').append(html)
+				})					
 			}
 		});
 		/*切换*/

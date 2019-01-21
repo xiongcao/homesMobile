@@ -234,29 +234,6 @@
         </div>
     </script>
     <script id="builddetail" type="text/html">
-        <nav class="middle-nav">
-        	{{each desc}}
-                <span id="{{$index}}">{{$value.title}}</span>
-            {{/each}}        	
-            <!--<span>空间</span>
-            <span>造价</span>
-            <span>解决方案</span>
-            <span>风格</span>-->
-            <span class="last"></span>
-        </nav>
-        <div>
-        	{{each desc}}
-        	    {{if $index == 0}} 
-			        <div class="middle-text" id="menu_{{$index}}">
-			            {{$value.content}}
-			        </div>
-			    {{/else}}
-			        <div class="middle-text" style="display:none" id="menu_{{$index}}">
-			            {{$value.content}}
-			        </div>			    
-		        {{/if}}
-        	{/each}
-        </div>
         <div class="middle-button">
             <i>您可能喜欢</i>
             <span class="action">相关案例</span>
@@ -355,15 +332,36 @@
 		$.each(designData.floor,function(i,val){
 			var html = '<span id="'+val+'">'+val+'</span>';
 			$('#first-choice').append(html)
-		});  
+		});
+		var _desc_name_hmtl = "" ,_desc_hmtl = "";
+		$.each(designData.desc,function(i,val){
+			_desc_name_hmtl+= "<span id="+i+" data-id='"+val.id+"'>"+val.title+"</span>";
+			if(i==0){
+				_desc_hmtl+= "<div class='middle-text' id='menu_"+i+"'>"+val.content+"</div>"
+			}else{
+				_desc_hmtl+= "<div class='middle-text'  style='display:none' id='menu_"+i+"'>"+val.content+"</div>"
+			}
+		});
+		$(".middle-nav").html(_desc_name_hmtl);
+		$(".middle-text").html(_desc_hmtl);
+		$(document).on('click','.middle-nav span',function(){
+			var _this = $(this);
+			var th_id = 'menu_' + _this.attr('id');
+			console.log(th_id);			
+			$('.middle-text').each(function(){
+				if(th_id == $(this).attr('id')){
+					$(this).css('display','flex').siblings().css('display','none')
+				}
+			})
+		})
 		$('#first-choice span:nth-child(1)').addClass('actives');
-		buildPlane(GetQueryString('id'),1);
-		$.each(buildPlane(GetQueryString('id'),1),function(i){
+		var _buildPlaneData = buildPlane(GetQueryString('id'),1);
+		$.each(_buildPlaneData,function(i){
 			var html = '<span id="'+(i + 1)+'">'+(i + 1)+'</span>';
 			$('#second-choice').append(html)
 		});	
 		$('#second-choice span:nth-child(1)').addClass('actives');
-		$('.build-list-right img').attr({'src':pubUrl + buildPlane(GetQueryString('id'),1)[0].img,'width':'100%'});
+		_buildPlaneData.length!=0 && $('.build-list-right img').attr({'src':pubUrl + _buildPlaneData[0].img,'width':'100%'});
 		/*户型选择*/
 		var list = [];
 		$('#first-choice span').on('click',function(){
@@ -401,25 +399,25 @@
 //		$(".bottom-content-cell").html(builddetail);
         /*底部菜单*/
 		/*内容*/
-//		var data = aboutCase(1,$('#tab-a').attr('data-id'));
-//		console.log(data);
-//		$.each(data,function(i,v){
-//			var html = '<div class="app-pic-list">'
-//							+'<div class="app-pic-cell">'
-//							    +'<a href="casedatail.html?id='+v.id+'">'
-//								+'<img src="'+pubUrl+v.photoUrlA+'" />'
-//								+'</a>'
-//								+'<div class="geo-transform">'
-//									+'<span>'+v.departmentId+'</span>'
-//									+'<div class="label-content">'
-//									    +'<label>'+v.name+'</label>'
-//									    +'<span>立即咨询</span>'
-//									+'</div>'
-//								+'</div>'
-//							+'</div>'
-//						+'</div>';
-//			$('#app-content').append(html)
-//		})		
+		var data = houseCase(GetQueryString('id'),1);
+		console.log(data);
+		$.each(data,function(i,v){
+			var html = '<div class="app-pic-list">'
+							+'<div class="app-pic-cell">'
+							    +'<a href="casedatail.html?id='+v.id+'">'
+								+'<img src="'+pubUrl+v.photoUrlA+'" />'
+								+'</a>'
+								+'<div class="geo-transform">'
+									+'<span>'+v.departmentId+'</span>'
+									+'<div class="label-content">'
+									    +'<label>'+v.name+'</label>'
+									    +'<span>立即咨询</span>'
+									+'</div>'
+								+'</div>'
+							+'</div>'
+						+'</div>';
+			$('#app-content').append(html)
+		})		
 		/*点击*/
 		$('.middle-button span').on('click',function(){
 			$(this).addClass('action').siblings().removeClass('action');
@@ -445,7 +443,7 @@
 					$('#app-content').append(html)
 				})
 			}else{
-				data = aboutCase(1,$('#tab-a').attr('data-id'));
+				data = houseCase(GetQueryString('id'),1);
 				$.each(data,function(i,v){
 					var html = '<div class="app-pic-list">'
 									+'<div class="app-pic-cell">'
