@@ -56,8 +56,12 @@
 							</li>							
 						</ul>
 						<div class="nav-login">
-							<button class="btns">登录 / 注册</button>
-							<button class="btns">快速报价</button>
+							<button class="btns" id="login">登录 / 注册</button>
+							<div class="login-success">
+								<a href="personLoginOut.html"><img src="img/person_pic.png" /></a>
+								<span id="loginOut">退出登录</span>
+							</div>
+							<button class="btns" id="price">快速报价</button>
 							<p>热线  4008-513-228</p>
 						</div>							
 					</div>
@@ -188,62 +192,98 @@
         		<div class="login-bottom">
         			<button class="btn-submit" id="logins">登录</button>
         		</div>
-        	</div>
+			</div>
+			<div class="price-window">
+				<div class="login-top">
+					<label>快速获取装修报价</label>
+				</div>	 
+				<div class="price-middle">
+					<input type="text" placeholder="您的姓名" />
+					<input type="text" placeholder="手机号" />
+					<input type="text" placeholder="楼盘名称" />
+					<input type="text" placeholder="房屋面积" />
+				</div>
+				<div class="login-bottom">
+					<button class="btn-submit btn-yellow">获取报价</button>
+					<p class="price-phone">免费咨询热线: 400-512-228</p>
+				</div>	        		
+			</div>
         </div>
 	</div>
 	<script id="caseListTemplate" type="text/html">
-    	{{each data}}
-			<div class="app-pic-list">
-				<div class="app-pic-cell">
-					<a href="buildList.html">
-						<img src="img/build_2.png" />
-					</a>
-					<div class="geo-transform">
-						<span>曼哈顿</span>
-						<div class="label-content">
-							<label>顶层豪宅会所</label>
-							<span>立即咨询</span>
+		{{if data.length!=0}}
+			{{each data}}
+				<div class="app-pic-list">
+					<div class="app-pic-cell">
+						<a href="buildList.html">
+							{{if $value.information&&$value.information.appbig}}
+								<img src="{{pubUrl + $value.information.appbig}}" />
+							{{else}}
+								<img src="" />
+							{{/if}}
+						</a>
+						<img src="img/thumbs_up_2.png" class="thumb_up" did="case" name="{{$value.caseid}}" />
+						<div class="geo-transform">
+							{{if $value.information}}
+							<span>{{$value.information.address}}</span>
+							<div class="label-content">
+								<label>{{$value.information.name}}</label>
+								<span>立即咨询</span>
+							</div>
+							{{else}}
+								<span></span>
+								<div class="label-content">
+									<label></label>
+									<span>立即咨询</span>
+								</div>
+							{{/if}}
 						</div>
 					</div>
-				</div>
-			</div>	 
-		{{/each}} 
+				</div>	 
+			{{/each}} 
+		{{/if}} 
 	</script>
 	<script id="houseListTemplate" type="text/html">
-    	{{each data}}
+		{{if data.length!=0}}
+			{{each data}}
+				<div class="app-pic-list">
+					<div class="app-pic-cell">
+						<a href="buildList.html?id={{$value.id}}">
+							<img src="{{pubUrl + $value.logo}}" />
+						</a>
+						<img src="img/thumbs_up_2.png" class="thumb_up" did="house" name="{{$value.id}}" />
+						<div class="geo-transform">
+							<span>{{$value.address}}</span>
+							<div class="label-content">
+								<label>{{$value.name}}</label>
+								<span>立即咨询</span>
+							</div>
+						</div>
+					</div>
+				</div>	 
+			{{/each}} 
+		{{/if}}
+	</script>
+	<script id="designerListTemplate" type="text/html">
+		{{if data.length!=0}}
+			{{each data}}
 			<div class="app-pic-list">
 				<div class="app-pic-cell">
-					<a href="buildList.html?id={{$value.id}}">
-						<img src="{{pubUrl + $value.logo}}" />
+					<a href="powerDesigner.html?id={{$value.designerid}}">
+						<img src="{{pubUrl + $value.information.headphoto}}" />
 					</a>
+					<img src="img/thumbs_up_2.png" class="thumb_up" did="designer" name="{{$value.designerid}}" />
 					<div class="geo-transform">
-						<span>{{$value.address}}</span>
+						<span>{{$value.information.name}}</span>
 						<div class="label-content">
-							<label>{{$value.name}}</label>
+							<label>{{$value.information.departmentId}}</label>
 							<span>立即咨询</span>
 						</div>
 					</div>
 				</div>
 			</div>	 
-		{{/each}} 
-	</script>
-	<script id="designerListTemplate" type="text/html">
-		{{each data}}
-		<div class="app-pic-list">
-			<div class="app-pic-cell">
-				<a href="powerDesigner.html?id={{$value.designerid}}">
-					<img src="{{pubUrl + $value.information.headphoto}}" />
-				</a>
-				<div class="geo-transform">
-					<span>{{$value.information.name}}</span>
-					<div class="label-content">
-						<label>{{$value.information.departmentId}}</label>
-						<span>立即咨询</span>
-					</div>
-				</div>
-			</div>
-		</div>	 
-		{{/each}} 
+			{{/each}} 
+		{{/if}} 
 	</script>
 	<script type="text/javascript" src="js/zepto.min.js"></script>
 	<script src="js/swiper.min.js"></script>
@@ -252,6 +292,7 @@
 	<script src="js/header.js?v=1.0.1"></script>
 	<script src="js/index.js?v=1.0.1"></script>
 	<script src="js/login.js"></script>
+	<script src="js/collect.js"></script>
 	<script type="text/javascript">
 		var mySwiper = new Swiper('.swiper-container',{
 			loop:true,
@@ -287,6 +328,39 @@
 
 		/*心愿单*/
 		userInfor && house_collect(userInfor.uid);
+
+		$(document).on('click','.thumb_up',function(){
+			if(userInfor == null){
+				$('#iosDialog2').fadeIn();
+			}else{
+				var url = "",obj={};
+				if($(this).attr('did')=="case"){
+					url = "/case/collect";
+					obj = {
+						caseid:$(this).attr('name'),
+						uid:userInfor.uid
+					}
+				}else if($(this).attr('did')=="house"){
+					url = "/house/collect";
+					obj = {
+						hid:$(this).attr('name'),
+						uid:userInfor.uid
+					}
+				}else if($(this).attr('did')=="designer"){
+					url = "/designer/collect";
+					obj = {
+						desid:$(this).attr('name'),
+						uid:userInfor.uid
+					}
+				}
+				$(this).attr('src','img/thumbs_up_1.png');
+				$('#toast').fadeIn(100).find('.weui-toast__content').text('已移出心愿单');
+				heartTip(url,obj);
+				setTimeout(function () {
+					$('#toast').fadeOut(100);
+				}, 2000);
+			}
+		});    
         /*底部菜单*/
 	   footerImg()
 	   

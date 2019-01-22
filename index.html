@@ -155,7 +155,11 @@
     <script id="changes" type="text/html">
         {{each child}}
 			<li class="slidenav-cell">
+				{{if $value.pid==41}}
+				<a href="{{$value.url}}">
+				{{else}}
 				<a href="{{$value.url}}?id={{$value.id}}">
+				{{/if}}
 					<span class="slidenav-cell-left">{{$value.name}}</span>
 					<!-- <span class="slidenav-cell-right"><i class="iconfont icon-youjiantou"></i></span>									 -->
 				</a>

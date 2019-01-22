@@ -183,8 +183,7 @@
         	</div>
         </div>
     </div>
-    <div id="dialogs">
-        <!--BEGIN dialog2-->
+    <!-- <div id="dialogs">
         <div class="js_dialog" id="iosDialog2" style="display: none;">
             <div class="weui-mask"></div>
             <div class="weui-dialog">
@@ -194,14 +193,14 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!--BEGIN toast-->
-    <div id="toast" style="display: none;">
+    <!-- <div id="toast" style="display: none;">
         <div class="weui-mask_transparent"></div>
         <div class="weui-toast">
             <p class="weui-toast__content">已加入心愿单</p>
         </div>
-    </div>
+    </div> -->
     <script id="change" type="text/html">
         {{each data}}
 			<li class="slidenav-cell" id="{{$value.id}}">
@@ -232,7 +231,11 @@
     <script id="changes" type="text/html">
         {{each child}}
 			<li class="slidenav-cell">
+				{{if $value.pid==41}}
+				<a href="{{$value.url}}">
+				{{else}}
 				<a href="{{$value.url}}?id={{$value.id}}">
+				{{/if}}
 					<span class="slidenav-cell-left">{{$value.name}}</span>
 					<!-- <span class="slidenav-cell-right"><i class="iconfont icon-youjiantou"></i></span>									 -->
 				</a>
@@ -246,6 +249,7 @@
 	<script src="js/common.js"></script>
 	<script src="js/header.js?v=1.0.1"></script>
 	<script src="js/login.js"></script>
+	<script src="js/collect.js"></script>
 	<script type="text/javascript">
 		var mySwiper = new Swiper('.swiper-container',{
 			loop:true,
@@ -269,21 +273,27 @@
         var returnData = (getUrl == '57') ? cases(0,1) : cases(1,1);
         console.log(returnData);
         $.each(returnData,function(i,v){
-        	var html = '<div class="app-pic-list">'
-						+'<div class="app-pic-cell">'
-							+'<a href="caseDetail.html?id='+v.id+'">'
-								+'<img src="'+pubUrl+v.appbig+'" />'
-							+'</a>'
-							+'<img src="img/thumbs_up_1.png" class="thumb_up" name="'+v.id+'" />'
-							+'<div class="geo-transform">'
-								+'<span>'+v.address+'</span>'
-								+'<div class="label-content">'
-								    +'<label>'+v.name+'</label>'
-								    +'<span>立即咨询</span>'
-								+'</div>'
+			var imgHtml = "";
+			if(v.is_collect==0){
+				imgHtml = '<img src="img/thumbs_up_1.png" class="thumb_up" name="'+v.id+'" />'
+			}else{
+				imgHtml = '<img src="img/thumbs_up_2.png" class="thumb_up" name="'+v.id+'" />'
+			}
+			var html = '<div class="app-pic-list">'
+					+'<div class="app-pic-cell">'
+						+'<a href="caseDetail.html?id='+v.id+'">'
+							+'<img src="'+pubUrl+v.appbig+'" />'
+						+'</a>'
+						+imgHtml
+						+'<div class="geo-transform">'
+							+'<span>'+v.address+'</span>'
+							+'<div class="label-content">'
+								+'<label>'+v.name+'</label>'
+								+'<span>立即咨询</span>'
 							+'</div>'
 						+'</div>'
-					+'</div>';
+					+'</div>'
+				+'</div>';
 			$('.lists').append(html)
         });
         /*底部菜单*/
@@ -298,23 +308,20 @@
 				if(attrs != 'img/thumbs_up_2.png'){
 					$(this).attr('src','img/thumbs_up_2.png');
 					$('#toast').fadeIn(100).find('.weui-toast__content').text('已加入心愿单');
-					heartTip($(this).attr('name'),userInfor.uid);
+					heartTip("/case/collect",{caseid:$(this).attr('name'),uid:userInfor.uid});
 		            setTimeout(function () {
-		                $('#toast').fadeOut(100);
+						$('#toast').fadeOut(100);
 		            }, 2000);
 				}else{
 					$(this).attr('src','img/thumbs_up_1.png');
 					$('#toast').fadeIn(100).find('.weui-toast__content').text('已移出心愿单');
-					heartTip($(this).attr('name'),userInfor.uid);
+					heartTip("/case/collect",{caseid:$(this).attr('name'),uid:userInfor.uid});
 		            setTimeout(function () {
 		                $('#toast').fadeOut(100);
 		            }, 2000);
 				}
 			}
 		});
-        $('#dialogs').on('click', '.weui-dialog__btn', function(){
-            $(this).parents('.js_dialog').fadeOut(200);
-        });
         /*下拉加载*/
         function selectMore(el,type){
        	    var pageNum = 1;

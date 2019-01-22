@@ -34,8 +34,12 @@
 				
 						</ul>
 						<div class="nav-login">
-							<button class="btns">登录 / 注册</button>
-							<button class="btns">快速报价</button>
+							<button class="btns" id="login">登录 / 注册</button>
+							<div class="login-success">
+								<a href="personLoginOut.html"><img src="img/person_pic.png" /></a>
+								<span id="loginOut">退出登录</span>
+							</div>
+							<button class="btns" id="price">快速报价</button>
 							<p>热线  4008-513-228</p>
 						</div>
 					</div>
@@ -119,7 +123,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="other-point now-this">
+		<div class="other-point now-this" id="work">
 			<span class="relate">工作机会</span>
 			<div class="other-line"></div>
 		</div> 
@@ -196,7 +200,11 @@
     <script id="changes" type="text/html">
         {{each child}}
 			<li class="slidenav-cell">
+				{{if $value.pid==41}}
+				<a href="{{$value.url}}">
+				{{else}}
 				<a href="{{$value.url}}?id={{$value.id}}">
+				{{/if}}
 					<span class="slidenav-cell-left">{{$value.name}}</span>
 					<!-- <span class="slidenav-cell-right"><i class="iconfont icon-youjiantou"></i></span>									 -->
 				</a>
@@ -218,6 +226,7 @@
 	<script src="js/template-web.js"></script>
 	<script src="js/common.js"></script>
 	<script src="js/header.js?v=1.0.1"></script>
+	<script src="js/login.js"></script>
 	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=74jE3MA1vryLVN8Gg6IGdS399BTuqD6N"></script>
 	<script type="text/javascript" src="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js"></script>
 	<script src="js/about.js"></script>

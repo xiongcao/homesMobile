@@ -265,7 +265,11 @@
     <script id="changes" type="text/html">
         {{each child}}
 			<li class="slidenav-cell">
+				{{if $value.pid==41}}
+				<a href="{{$value.url}}">
+				{{else}}
 				<a href="{{$value.url}}?id={{$value.id}}">
+				{{/if}}
 					<span class="slidenav-cell-left">{{$value.name}}</span>
 					<!-- <span class="slidenav-cell-right"><i class="iconfont icon-youjiantou"></i></span>									 -->
 				</a>
@@ -391,9 +395,12 @@
 		});
 		/*设计师*/
 		var designData = casedetail(GetQueryString('id'));
-		designData.info.headphoto = pubUrl + designData.info.headphoto;
-		var designer = template('designer',designData);
-		$(".design").html(designer);
+		if(designData.designer){
+			designData.info.headphoto = pubUrl + designData.info.headphoto;
+			var designer = template('designer',designData);
+			$(".design").html(designer);
+			$(".bck p").text(designData.name);
+		}
 		/*案例列表*/
 		var _temCaseList = caseList(GetQueryString('id'));
 		var caseList = template('caseList',_temCaseList);
@@ -414,7 +421,7 @@
 		$.each(data,function(i,v){
 			var html = '<div class="app-pic-list">'
 							+'<div class="app-pic-cell">'
-							    +'<a href="casedatail.html?id='+v.id+'">'
+							    +'<a href="caseDetail.html?id='+v.id+'">'
 								+'<img src="'+pubUrl+v.appsmall+'" />'
 								+'</a>'
 								+'<div class="geo-transform">'

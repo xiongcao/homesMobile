@@ -248,6 +248,14 @@
 	width:100%;
 	height:24rem;
 }
+
+.app-pic-cell .thumb_up{
+	width:8vw;
+	height:8vw;
+	position:absolute;
+	right:4vw;
+	top:1rem;
+}
 .geo-transform {
     width: 93vw;
     height: 4.4rem;

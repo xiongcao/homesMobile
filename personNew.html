@@ -57,7 +57,11 @@
 						</ul>
 						<div class="nav-login">
 							<button class="btns" id="login">登录 / 注册</button>
-							<button class="btns" id="loginOut" style="display:none">退出登录</button>
+							<!-- <button class="btns" id="loginOut" style="display:none">退出登录</button> -->
+							<div class="login-success">
+								<a href="personLoginOut.html"><img src="img/person_pic.png" /></a>
+								<span id="loginOut">退出登录</span>
+							</div>
 							<button class="btns" id="price">快速报价</button>
 							<p>热线  4008-513-228</p>
 						</div>								
@@ -152,7 +156,22 @@
         		<div class="login-bottom">
         			<button class="btn-submit" id="logins">登录</button>
         		</div>
-        	</div>
+			</div>
+			<div class="price-window">
+				<div class="login-top">
+					<label>快速获取装修报价</label>
+				</div>	 
+				<div class="price-middle">
+					<input type="text" placeholder="您的姓名" />
+					<input type="text" placeholder="手机号" />
+					<input type="text" placeholder="楼盘名称" />
+					<input type="text" placeholder="房屋面积" />
+				</div>
+				<div class="login-bottom">
+					<button class="btn-submit btn-yellow">获取报价</button>
+					<p class="price-phone">免费咨询热线: 400-512-228</p>
+				</div>	        		
+			</div>
         </div>
     </div>
     <script id="gift" type="text/html">

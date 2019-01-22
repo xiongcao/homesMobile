@@ -192,8 +192,12 @@
 							</li>											
 						</ul>
 						<div class="nav-login">
-							<button class="btns">登录 / 注册</button>
-							<button class="btns">快速报价</button>
+							<button class="btns" id="login">登录 / 注册</button>
+							<div class="login-success">
+								<a href="personLoginOut.html"><img src="img/person_pic.png" /></a>
+								<span id="loginOut">退出登录</span>
+							</div>
+							<button class="btns" id="price">快速报价</button>
 							<p>热线  4008-513-228</p>
 						</div>						
 					</div>
@@ -208,114 +212,6 @@
 
 	        </div>
 		</div>
-		<!--<div class="app-describe">
-			<div class="app-title">
-				<label>关于创意的一切</label>
-				<label>都和睿缔有关</label>
-			</div>
-			<div class="app-contents">
-				睿缔创意设计核心服务内容是“懂你懂房子”，通过与客户的沟通，挖掘客户内心对家的憧憬。与此同时，了解住宅原始建筑的细统数据信息，根据住宅信息输出科学的、具有可实施性的基础设计方案，并且将客户精神需求、生活需求融入设计，通过功能、价格、美学、人文、文脉等5个方面实现创意设计完美呈现。
-			</div>
-			<div class="app-btn">
-				<button class="btn btn-normal">保持联系</button>
-			</div>
-		</div>
-		<div class="app-pic-list">
-			<div class="swiper-containers">
-			    <div class="swiper-wrapper">
-			        <div class="swiper-slide">
-						<div class="app-pic-cell">
-							<img src="img/design_1.png" />
-							<div class="geo-transform">
-								<span>创意设计部</span>
-								<div class="label-content">
-								    <label>黄晨星</label>
-								    <span>立即咨询</span>
-								</div>
-							</div>
-						</div>
-			        </div>
-			        <div class="swiper-slide">
-						<div class="app-pic-cell">
-							<img src="img/design_1.png" />
-							<div class="geo-transform">
-								<span>创意设计部</span>
-								<div class="label-content">
-								    <label>黄晨星</label>
-								    <span>立即咨询</span>
-								</div>
-							</div>
-						</div>
-			        </div>
-			        <div class="swiper-slide">
-						<div class="app-pic-cell">
-							<img src="img/design_3.png" />
-							<div class="geo-transform">
-								<span>创意设计部</span>
-								<div class="label-content">
-								    <label>黄晨星</label>
-								    <span>立即咨询</span>
-								</div>
-							</div>
-						</div>
-			        </div>
-			    </div>
-		    </div>
-		</div>
-		<div class="app-describe">
-			<div class="app-title">
-				<label>关于创意的一切</label>
-				<label>都和睿缔有关</label>
-			</div>
-			<div class="app-contents">
-				睿缔创意设计核心服务内容是“懂你懂房子”，通过与客户的沟通，挖掘客户内心对家的憧憬。与此同时，了解住宅原始建筑的细统数据信息，根据住宅信息输出科学的、具有可实施性的基础设计方案，并且将客户精神需求、生活需求融入设计，通过功能、价格、美学、人文、文脉等5个方面实现创意设计完美呈现。
-			</div>
-			<div class="app-btn">
-				<button class="btn btn-normal">保持联系</button>
-			</div>
-		</div>
-		<div class="app-pic-list">
-			<div class="swiper-containers">
-			    <div class="swiper-wrapper">
-			        <div class="swiper-slide">
-						<div class="app-pic-cell">
-							<img src="img/design_1.png" />
-							<div class="geo-transform">
-								<span>创意设计部</span>
-								<div class="label-content">
-								    <label>黄晨星</label>
-								    <span>立即咨询</span>
-								</div>
-							</div>
-						</div>
-			        </div>
-			        <div class="swiper-slide">
-						<div class="app-pic-cell">
-							<img src="img/design_1.png" />
-							<div class="geo-transform">
-								<span>创意设计部</span>
-								<div class="label-content">
-								    <label>黄晨星</label>
-								    <span>立即咨询</span>
-								</div>
-							</div>
-						</div>
-			        </div>
-			        <div class="swiper-slide">
-						<div class="app-pic-cell">
-							<img src="img/design_3.png" />
-							<div class="geo-transform">
-								<span>创意设计部</span>
-								<div class="label-content">
-								    <label>黄晨星</label>
-								    <span>立即咨询</span>
-								</div>
-							</div>
-						</div>
-			        </div>
-			    </div>
-		    </div>
-		</div>						-->
 		<div class="other-point">
 			<span class="relate">Other  related</span>
 			<div class="other-line"></div>
@@ -341,6 +237,50 @@
 		  	</div>
 		  	<p>京公网安备11010502025574 · 京ICP证150031号</p>
 	    </div>
+	</div>
+	<div class="weui-skin_android" id="androidActionsheet" style="display: none">
+		<div class="weui-mask"></div>
+		<div class="weui-actionsheet">
+			<div class="shutdown">
+				<img src="img/close.png"  />
+			</div>
+			<div class="login-window">
+				<div class="login-top">
+					<label>Hi,Friends!</label>
+					<p>Welcome to Redefining Habitat</p>
+				</div>
+				<div class="login-middle">
+					<div class="login-phone">
+						<input placeholder="请输入手机号" type="text" class="phone-number" />
+						<div class="tip"></div>
+					</div>
+					<div class="login-phone">
+						<input placeholder="请输入验证码" type="text" class="phone-check" />
+						<div class="tip"></div>
+						<span class="btn-get">获取验证码</span>
+					</div>
+				</div>
+				<span class="check-tips">1小时之内只能发送3次</span>	        		
+				<div class="login-bottom">
+					<button class="btn-submit" id="logins">登录</button>
+				</div>
+			</div>
+			<div class="price-window">
+				<div class="login-top">
+					<label>快速获取装修报价</label>
+				</div>	 
+				<div class="price-middle">
+					<input type="text" placeholder="您的姓名" />
+					<input type="text" placeholder="手机号" />
+					<input type="text" placeholder="楼盘名称" />
+					<input type="text" placeholder="房屋面积" />
+				</div>
+				<div class="login-bottom">
+					<button class="btn-submit btn-yellow">获取报价</button>
+					<p class="price-phone">免费咨询热线: 400-512-228</p>
+				</div>	        		
+			</div>
+		</div>
 	</div>
     <script id="designer" type="text/html">
         <div class="design-tl">
@@ -417,18 +357,23 @@
     <script id="changes" type="text/html">
         {{each child}}
 			<li class="slidenav-cell">
+				{{if $value.pid==41}}
+				<a href="{{$value.url}}">
+				{{else}}
 				<a href="{{$value.url}}?id={{$value.id}}">
+				{{/if}}
 					<span class="slidenav-cell-left">{{$value.name}}</span>
 					<!-- <span class="slidenav-cell-right"><i class="iconfont icon-youjiantou"></i></span>									 -->
 				</a>
 			</li>          
         {{/each}} 
     </script>
-	<script type="text/javascript" src="js/zepto.js"></script>
+	<script type="text/javascript" src="js/zepto.min.js"></script>
 	<script src="js/swiper.min.js"></script>
 	<script src="js/template-web.js"></script>
 	<script src="js/common.js"></script>
 	<script src="js/header.js?v=1.0.1"></script>
+	<script src="js/login.js"></script>
 	<script type="text/javascript">
 		var mySwiper = new Swiper('.swiper-container',{
 			loop:true,
@@ -451,9 +396,29 @@
         var changeHtml = template('change',inithead());
         $(".slidenav-cells").html(changeHtml);	
 		var data = designerDetail(GetQueryString('id'));
-		$('.app-content').children('img').attr('src',pubUrl+data.headphoto);
+		data && $('.app-content').children('img').attr('src',pubUrl+data.headphoto);
 		var htmls = template("designer",data);
-	    $('.design').html(htmls);
+		$('.design').html(htmls);
+		
+		/* 设计师浏览量 */
+		var visitFn = function(){
+			$.ajax({
+				type: 'post',
+				url: pubUrl + '/designer/visit',
+				data:{
+					'id': GetQueryString('id')
+				},
+				dataType: 'json',
+				async: false,
+				success: function(data){
+					console.log(data)
+				},
+				error: function(err){
+					console.log(err)
+				}					
+			});
+		}()
+
 	</script>
 </body>
 </html>

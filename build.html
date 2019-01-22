@@ -41,6 +41,10 @@
 						</ul>
 						<div class="nav-login">
 							<button class="btns" id="login">登录 / 注册</button>
+							<div class="login-success">
+								<a href="personLoginOut.html"><img src="img/person_pic.png" /></a>
+								<span id="loginOut">退出登录</span>
+							</div>
 							<button class="btns" id="price">快速报价</button>
 							<p>热线  4008-513-228</p>
 						</div>					
@@ -220,7 +224,11 @@
     <script id="changes" type="text/html">
         {{each child}}
 			<li class="slidenav-cell">
+				{{if $value.pid==41}}
+				<a href="{{$value.url}}">
+				{{else}}
 				<a href="{{$value.url}}?id={{$value.id}}">
+				{{/if}}
 					<span class="slidenav-cell-left">{{$value.name}}</span>
 					<!-- <span class="slidenav-cell-right"><i class="iconfont icon-youjiantou"></i></span>									 -->
 				</a>
@@ -233,6 +241,8 @@
 	<script src="js/dropload.min.js"></script>
 	<script src="js/common.js"></script>
 	<script src="js/header.js?v=1.0.1"></script>
+	<script src="js/login.js"></script>
+	<script src="js/collect.js"></script>
 	<script type="text/javascript">
 		var mySwiper = new Swiper('.swiper-container',{
 			loop:true,
@@ -253,11 +263,18 @@
         }); 
         /*列表*/
         $.each(build(1),function(i,v){
+			var imgHmtl = "";
+			if(v.collect==0){
+				imgHmtl = '<img src="img/thumbs_up_1.png" class="thumb_up" name="'+v.id+'" />'
+			}else{
+				imgHmtl = '<img src="img/thumbs_up_2.png" class="thumb_up" name="'+v.id+'" />'
+			}
         	var html = '<div class="app-pic-list">'
 						+'<div class="app-pic-cell">'
 							+'<a href="buildList.html?id='+v.id+'">'
 								+'<img src="'+pubUrl+v.logo+'" />'
 							+'</a>'
+							+imgHmtl
 							+'<div class="geo-transform">'
 								+'<span>'+v.address+'</span>'
 								+'<div class="label-content">'
@@ -268,7 +285,31 @@
 						+'</div>'
 					+'</div>';
 			$('#app-content').append(html)
-        });        
+		});    
+		/*心愿单*/
+		$(document).on('click','.thumb_up',function(){
+			if(userInfor == null){
+				$('#iosDialog2').fadeIn();
+			}else{
+				var attrs = $(this).attr('src');
+				var parents = $(this).parent();
+				if(attrs != 'img/thumbs_up_2.png'){
+					$(this).attr('src','img/thumbs_up_2.png');
+					$('#toast').fadeIn(100).find('.weui-toast__content').text('已加入心愿单');
+					heartTip("/house/collect",{hid:$(this).attr('name'),uid:userInfor.uid});
+		            setTimeout(function () {
+						$('#toast').fadeOut(100);
+		            }, 2000);
+				}else{
+					$(this).attr('src','img/thumbs_up_1.png');
+					$('#toast').fadeIn(100).find('.weui-toast__content').text('已移出心愿单');
+					heartTip("/house/collect",{hid:$(this).attr('name'),uid:userInfor.uid});
+		            setTimeout(function () {
+		                $('#toast').fadeOut(100);
+		            }, 2000);
+				}
+			}
+		});    
         /*底部菜单*/
 	   footerImg()
 	   

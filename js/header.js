@@ -13,7 +13,12 @@ var inithead = function(){
 					dataType: 'json',
 					async: false,
 					success: function(data){
-						v.child = data
+						if(v.id==41){
+							v.child = [{"id":43,"name":"联系我们","sort":12,"pid":41,"url":"about.html#contact","words":null,"img_url":null,"title":"","text":""},
+										{"id":44,"name":"工作机会","sort":13,"pid":41,"url":"about.html#work","words":null,"img_url":null,"title":"","text":""}]
+						}else{
+							v.child = data
+						}
 					},
 				    error: function(err){
 				     	console.log(err)
@@ -316,13 +321,14 @@ var aboutCase = function(id){
 }
 
 /** 楼盘相关案例 */
-var houseCase = function(hid,page){
+var houseCase = function(hid,page,uid){
 	var list = [];
 	$.ajax({
 		type: 'post',
 		url: pubUrl + '/house/type/case?page='+page,
 		data: {
-			hid: hid
+			hid: hid,
+			uid: uid
 		},
 		dataType: 'json',
 		async: false,
@@ -653,19 +659,16 @@ var footerImg = function(){
 }
 
 /*心愿单*/
-var heartTip = function(x,y){
+var heartTip = function(url,obj){
 	$.ajax({
 		type:"post",
-		url:pubUrl+"/case/collect",
+		url:pubUrl+url,
 		async:true,
-		data:{
-			'caseid': x,
-			'cid': y
-		},
-        headers: { 
-            "Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJrZW4iLCJpYXQiOjE1Mzc1NTQzMDksImRhdGEiOnsidXNlcm5hbWUiOiJ4dXRvbmdiYW8iLCJpc19zdXBlcnVzZXIiOjEsImlkIjoxNywibG9naW5fdGltZSI6MTUzNzU1NDMwOX0sImV4cCI6MTUzODE1NDMwOX0.32Lys4hjjY2XRpM2r9YSmpYA798u821m_M5Tzb6wxIU",
-            'Content-Type': 'application/x-www-form-urlencoded'  //multipart/form-data;boundary=--xxxxxxx   application/json
-        }, 
+		data:obj,
+        // headers: { 
+        //     "Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJrZW4iLCJpYXQiOjE1Mzc1NTQzMDksImRhdGEiOnsidXNlcm5hbWUiOiJ4dXRvbmdiYW8iLCJpc19zdXBlcnVzZXIiOjEsImlkIjoxNywibG9naW5fdGltZSI6MTUzNzU1NDMwOX0sImV4cCI6MTUzODE1NDMwOX0.32Lys4hjjY2XRpM2r9YSmpYA798u821m_M5Tzb6wxIU",
+        //     'Content-Type': 'application/x-www-form-urlencoded'  //multipart/form-data;boundary=--xxxxxxx   application/json
+        // }, 
 		success: function(data){
 			console.log(data);					
 		},

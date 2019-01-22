@@ -233,7 +233,11 @@
     <script id="changes" type="text/html">
         {{each child}}
 			<li class="slidenav-cell">
+				{{if $value.pid==41}}
+				<a href="{{$value.url}}">
+				{{else}}
 				<a href="{{$value.url}}?id={{$value.id}}">
+				{{/if}}
 					<span class="slidenav-cell-left">{{$value.name}}</span>
 					<!-- <span class="slidenav-cell-right"><i class="iconfont icon-youjiantou"></i></span>									 -->
 				</a>
@@ -246,6 +250,7 @@
 	<script src="js/common.js"></script>
 	<script src="js/header.js?v=1.0.1"></script>
 	<script src="js/login.js?v=1.0.1"></script>
+	<script src="js/collect.js?v=1.0.1"></script>
 	<script type="text/javascript">
 		var mySwiper = new Swiper('.swiper-container',{
 			loop:true,
@@ -274,13 +279,19 @@
         }); 
         
         /*设计师轮播*/
-        designer(GetQueryString('id'));
         $.each(designer(GetQueryString('id')),function(i,v){
+			var imgHmtl = "";
+			if(v.is_collect==0){
+				imgHmtl = '<img src="img/thumbs_up_1.png" class="thumb_up" name="'+v.id+'" />'
+			}else{
+				imgHmtl = '<img src="img/thumbs_up_2.png" class="thumb_up" name="'+v.id+'" />'
+			}
         	var html = '<div class="swiper-slide">'
 						+'<div class="app-pic-cell">'
 						    +'<a href="powerDesigner.html?id='+v.id+'">'
 							+'<img src="'+pubUrl+v.photoUrlA+'" />'
 							+'</a>'
+							+imgHmtl
 							+'<div class="geo-transform">'
 								+'<span>'+v.departmentId+'</span>'
 								+'<div class="label-content">'
@@ -291,7 +302,31 @@
 						+'</div>'
 			        +'</div>';
 			$('#swiper-2').append(html)        
-        })
+		})
+		/*心愿单*/
+		$(document).on('click','.thumb_up',function(){
+			if(userInfor == null){
+				$('#iosDialog2').fadeIn();
+			}else{
+				var attrs = $(this).attr('src');
+				var parents = $(this).parent();
+				if(attrs != 'img/thumbs_up_2.png'){
+					$(this).attr('src','img/thumbs_up_2.png');
+					$('#toast').fadeIn(100).find('.weui-toast__content').text('已加入心愿单');
+					heartTip("/designer/collect",{desid:$(this).attr('name'),uid:userInfor.uid});
+		            setTimeout(function () {
+						$('#toast').fadeOut(100);
+		            }, 2000);
+				}else{
+					$(this).attr('src','img/thumbs_up_1.png');
+					$('#toast').fadeIn(100).find('.weui-toast__content').text('已移出心愿单');
+					heartTip("/designer/collect",{desid:$(this).attr('name'),uid:userInfor.uid});
+		            setTimeout(function () {
+		                $('#toast').fadeOut(100);
+		            }, 2000);
+				}
+			}
+		});    
         /*底部菜单*/
        footerImg()
 	</script>

@@ -122,7 +122,6 @@ $('#logins').on('click',function(){
 
 var userInfor = JSON.parse(localStorage.getItem('userInfor'));
 console.log(userInfor);
-
 (userInfor == undefined) ? ($('#login').fadeIn(),$('.login-success').fadeOut()) : ($('#login').fadeOut(),$('.login-success').fadeIn());
 $('#loginOut').on('click',function(){
 	localStorage.clear();
