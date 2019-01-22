@@ -329,7 +329,7 @@
         $('.middle-text').append(buildListData.introduce);
         $('.app-content').children('img').attr('src',pubUrl+buildListData.img);
         /*列表*/
-        $.each(buildcate(GetQueryString('id'),1),function(i,v){
+        $.each(buildcate(GetQueryString('id'),1,userInfor?userInfor.uid:0),function(i,v){
 			var imgHmtl = "";
 			if(v.is_collect==0){
 				imgHmtl = '<img src="img/thumbs_up_1.png" class="thumb_up" name="'+v.id+'" />'

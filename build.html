@@ -262,7 +262,7 @@
 			$('.swiper-wrapper').append(html)
         }); 
         /*列表*/
-        $.each(build(1),function(i,v){
+        $.each(build(1,userInfor?userInfor.uid:''),function(i,v){
 			var imgHmtl = "";
 			if(v.collect==0){
 				imgHmtl = '<img src="img/thumbs_up_1.png" class="thumb_up" name="'+v.id+'" />'

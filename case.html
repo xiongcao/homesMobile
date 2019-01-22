@@ -270,7 +270,7 @@
         });
         /*加载*/
         var getUrl = GetQueryString('id');
-        var returnData = (getUrl == '57') ? cases(0,1) : cases(1,1);
+        var returnData = (getUrl == '57') ? cases(0,1,userInfor?userInfor.uid:0) : cases(1,1,userInfor?userInfor.uid:0);
         console.log(returnData);
         $.each(returnData,function(i,v){
 			var imgHtml = "";
@@ -346,7 +346,8 @@
 		                async:true,
 		                data:{
 							type:type,
-							page:pageNum
+							page:pageNum,
+							uid:userInfor?userInfor.uid:0
 		                },
 		                success: function(res){  
 							var lists = res.data;

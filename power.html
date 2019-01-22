@@ -279,7 +279,7 @@
         }); 
         
         /*设计师轮播*/
-        $.each(designer(GetQueryString('id')),function(i,v){
+        $.each(designer(GetQueryString('id'),userInfor?userInfor.uid:0),function(i,v){
 			var imgHmtl = "";
 			if(v.is_collect==0){
 				imgHmtl = '<img src="img/thumbs_up_1.png" class="thumb_up" name="'+v.id+'" />'

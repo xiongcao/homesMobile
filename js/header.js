@@ -86,14 +86,15 @@ var loopsOne = function(id){
 
 /*案例*/
 
-var cases = function(type,page){
+var cases = function(type,page,uid){
 	var list = [];
 	$.ajax({
 		type: 'post',
 		url: pubUrl + '/calist',
 		data:{
 			type:type,
-			page:page
+			page:page,
+			uid:uid
 		},
 		dataType: 'json',
 		async: false,
@@ -168,13 +169,14 @@ var caseOther = function(){
 }
 
 /*楼盘*/
-var build = function(page){
+var build = function(page,uid){
 	var list = [];
 	$.ajax({
 		type: 'post',
 		url: pubUrl + '/house',
 		data:{
-			page:page
+			page:page,
+			uid:uid
 		},
 		dataType: 'json',
 		async: false,
@@ -234,14 +236,15 @@ var buildLoop = function(id,position){
 }
 
 /*楼盘户型*/
-var buildcate = function(id,page){
+var buildcate = function(id,page,uid){
 	var content = [];
 	$.ajax({
 		type: 'post',
 		url: pubUrl + '/house/type',
 		data:{
 			hid:id,
-			page:page
+			page:page,
+			uid:uid
 		},
 		dataType: 'json',
 		async: false,
@@ -383,13 +386,14 @@ var aboutNew = function(){
 }
 
 /*设计师*/
-var designer = function(id){
+var designer = function(id,uid){
 	var list = [];
 	$.ajax({
         type: 'post',
         url: pubUrl + '/getdesigner',
         data:{
-          id:id
+		  id:id,
+		  uid:uid
         },
         dataType: 'json',
         async: false,
