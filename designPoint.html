@@ -305,14 +305,18 @@
 										+'</div>'
 									+'</div>';	
 					    $('.app-con').append(html)
-	        		})
+					})
+					
+					$.each($(".geo-transfer"),function(i){
+						$(this).children("p").hide().first("p").show();
+					});
 	        	}
 	        });
 		});
         /*菜单下列表*/
-        var Id = $('.app-cell:first-child').attr('id');
-        console.log(ruidList(Id));
-        $.each(ruidList(Id),function(i,val){
+		var Id = $('.app-cell:first-child').attr('id');
+		var ruidListData = ruidList(Id);
+        $.each(ruidListData,function(i,val){
 			var html = '<span id="'+val.id+'">'+val.name+'</span>';
 			$('.app-choice-down').append(html)
         });
@@ -337,38 +341,10 @@
 									+'</div>'
 								+'</div>';	
 				    $('.app-con').append(html)
-	    		})
-        	}
-        });
-        /*菜单下列表*/
-        var Id = $('.app-cell:first-child').attr('id');
-        console.log(ruidList(Id));
-        $.each(ruidList(Id),function(i,val){
-			var html = '<span id="'+val.id+'">'+val.name+'</span>';
-			$('.app-choice-down').append(html)
-        });
-        $.each($('.app-choice-down').children('span'),function(i){
-        	if(i == 0){
-        		$(this).addClass('actives').siblings().removeClass('actives');
-        		var list = ruiddata($(this).attr('id'));
-	    		var action;
-	    		$('.app-choice-down span').each(function(){
-	    			if($(this).hasClass('actives')){
-	    				action = $(this).attr('id')
-	    			}
-	    		})
-	    		$.each(list,function(i,v){
-	    			var html = '<div class="app-pic-list">'
-									+'<div class="app-pic-cell">'
-										+'<a href="designPointDetail.html?id='+v.id+'&typeid='+action+'"><img src="'+pubUrl+v.pic_a+'" /></a>'
-										+'<div class="geo-transfer">'
-											+'<label>'+v.title+'</label>'
-											+v.content
-										+'</div>'					
-									+'</div>'
-								+'</div>';	
-				    $('.app-con').append(html)
-	    		})
+				})
+				$.each($(".geo-transfer"),function(i){
+					$(this).children("p").hide().first("p").show();
+				});
         	}
         });
         /*切换*/
@@ -393,8 +369,12 @@
 								+'</div>'
 							+'</div>';	
 			    $('.app-con').append(html)
-    		})
+			})
+			$.each($(".geo-transfer"),function(i){
+				$(this).children("p").hide().first("p").show();
+			});
 		});
+		
         /*底部菜单*/
        footerImg()  
 	</script>

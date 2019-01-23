@@ -1,3 +1,4 @@
+var GlobalMenu;
 var inithead = function(){
 	var list = {};
 	$.ajax({
@@ -14,8 +15,9 @@ var inithead = function(){
 					async: false,
 					success: function(data){
 						if(v.id==41){
-							v.child = [{"id":43,"name":"联系我们","sort":12,"pid":41,"url":"about.html#contact","words":null,"img_url":null,"title":"","text":""},
-										{"id":44,"name":"工作机会","sort":13,"pid":41,"url":"about.html#work","words":null,"img_url":null,"title":"","text":""}]
+							// v.child = [{"id":43,"name":"联系我们","sort":12,"pid":41,"url":"about.html#contact","words":null,"img_url":null,"title":"","text":""},
+							// 			{"id":44,"name":"工作机会","sort":13,"pid":41,"url":"about.html#work","words":null,"img_url":null,"title":"","text":""}]
+							v.child = [];
 						}else{
 							v.child = data
 						}
@@ -31,11 +33,17 @@ var inithead = function(){
 	     	console.log(err)
 	    }
 	});
+	GlobalMenu = list;
 	return list
 }
 
 var getId = function(m){
-	var list = inithead().data;
+	var list;
+	if(GlobalMenu){
+		list = GlobalMenu.data;
+	}else{
+		list = inithead().data;
+	}
 	for(var i = 0; i < list.length; i++){
 		if(i == m){
 			return list[i].id
@@ -451,7 +459,12 @@ var areas = function(){
 
 /*睿帝实力--设计观点*/
 var ruid = function(m){
-	var list = inithead().data;
+	var list;
+	if(GlobalMenu){
+		list = GlobalMenu.data;
+	}else{
+		list = inithead().data;
+	}
 	for(var i = 0; i < list.length; i++){
 		if(i == m){
 			return list[i].child

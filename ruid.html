@@ -305,7 +305,10 @@
 										+'</div>'
 									+'</div>';	
 					    $('.app-con').append(html)
-		    		})
+					})
+					$.each($(".geo-transfer"),function(i){
+						$(this).children("p").hide().first("p").show();
+					});
 	        	}
 	        });
 		});
@@ -337,7 +340,10 @@
 									+'</div>'
 								+'</div>';	
 				    $('.app-con').append(html)
-	    		})
+				})
+				$.each($(".geo-transfer"),function(i){
+					$(this).children("p").hide().first("p").show();
+				});
         	}
         });
         /*切换*/
@@ -362,7 +368,10 @@
 								+'</div>'
 							+'</div>';	
 			    $('.app-con').append(html)
-    		})
+			})
+			$.each($(".geo-transfer"),function(i){
+				$(this).children("p").hide().first("p").show();
+			});
 		});
         /*底部菜单*/
        footerImg()  
