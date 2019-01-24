@@ -185,6 +185,24 @@ $.each(getBottomMenu(),function(e,v){
 $(".bottom-nav").html(buttomMenuHmtl);
 
 
+//返回顶部
+var backTop = '<div class="backTop"><img src="img/go_top.png"/></div>';
+$("body").append(backTop);
+
+$(document).scroll(function(){
+	var scrollTop = $("html").scrollTop();	//滚动条高度
+	console.log(scrollTop)
+	if(scrollTop>1000){
+		$(".backTop").show();
+	}else{
+		$(".backTop").hide();
+	}
+})
+
+$(document).on("click",'.backTop',function(){
+	$("html").scrollTop(0)
+})
+
 var _53code = document.createElement("script");
 _53code.src = "https://tb.53kf.com/code/code/10177157/1";
 var s = document.getElementsByTagName("script")[0]; 

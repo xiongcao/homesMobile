@@ -41,6 +41,21 @@ body {
     color: #333333;
     overflow-x: hidden;
 }
+/* 返回顶部 */
+.backTop{
+	position: fixed;
+    right: 10px;
+    top: 100px;
+    width: 30px;
+    height: 30px;
+	background: #4a4a4a;
+	display: none;
+}
+
+.backTop img{
+	width: 30px;
+    height: 30px;
+}
 .container{
     background-color: #F0F0F0;	
 }
