@@ -189,6 +189,11 @@
 	<script src="js/index.js?v=1.0.1"></script>
 	<script src="js/login.js"></script>
 	<script type="text/javascript">
+        /*图片轮播*/
+		$.each(loops(getId(0)),function(i,val){
+			var html = '<div class="swiper-slide"><img src="'+pubUrl+val.img_path+'" /></div>';
+			$('.swiper-wrapper').append(html)
+		})
 		var mySwiper = new Swiper('.swiper-container',{
 			loop:true,
 		    pagination: {
@@ -197,11 +202,6 @@
 		    },
 			autoplay:1000
 		});
-        /*图片轮播*/
-		$.each(loops(getId(0)),function(i,val){
-			var html = '<div class="swiper-slide"><img src="'+pubUrl+val.img_path+'" /></div>';
-			$('.swiper-wrapper').append(html)
-		})
         
         /*导航*/
         var changeHtml = template('change',inithead());

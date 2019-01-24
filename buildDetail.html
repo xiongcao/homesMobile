@@ -299,14 +299,7 @@
 	<script src="js/header.js?v=1.0.1"></script>
 	<script src="js/login.js"></script>
 	<script type="text/javascript">
-		var mySwiper = new Swiper('.swiper-container',{
-			loop:true,
-		    pagination: {
-		        el:'.swiper-pagination',
-		        clickable: true,
-		    },
-			autoplay:1000
-		});
+		
 		$('.app-pic-cell').on('touchstart',function(){
 			$(this).children('.geo-transform').css({
 				'z-index':5,
@@ -333,7 +326,15 @@
         $.each(buildLoop(GetQueryString('id'),1),function(i,val){
 			var html = '<div class="swiper-slide"><img src="'+pubUrl+val.img+'" /></div>';
 			$('#swiper-1').append(html)
-        }); 
+		}); 
+		var mySwiper = new Swiper('.swiper-container',{
+			loop:true,
+		    pagination: {
+		        el:'.swiper-pagination',
+		        clickable: true,
+		    },
+			autoplay:1000
+		});
         console.log(buildLoop(GetQueryString('id'),2));
         $.each(buildLoop(GetQueryString('id'),2),function(i,val){
 			var html = '<div class="swiper-slide"><img src="'+pubUrl+val.img+'" /></div>';

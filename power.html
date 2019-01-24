@@ -252,23 +252,7 @@
 	<script src="js/login.js?v=1.0.1"></script>
 	<script src="js/collect.js?v=1.0.1"></script>
 	<script type="text/javascript">
-		var mySwiper = new Swiper('.swiper-container',{
-			loop:true,
-		    pagination: {
-		        el:'.swiper-pagination',
-		        clickable: true,
-		    },
-			autoplay:1000
-		});
-		var mySwiper = new Swiper('.swiper-containers',{
-			loop:true,
-		    pagination: {
-		        el:'.swiper-pagination',
-		        clickable: true,
-		    },
-			autoplay:1000
-		});
-        
+		
         /*导航*/
         var changeHtml = template('change',inithead());
         $(".slidenav-cells").html(changeHtml);
@@ -277,7 +261,14 @@
 			var html = '<div class="swiper-slide"><img src="'+pubUrl+val.img_path+'" /></div>';
 			$('#swiper-1').append(html)
         }); 
-        
+        var mySwiper = new Swiper('.swiper-container',{
+			loop:true,
+		    pagination: {
+		        el:'.swiper-pagination',
+		        clickable: true,
+		    },
+			autoplay:1000
+		});
         /*设计师轮播*/
         $.each(designer(GetQueryString('id'),userInfor?userInfor.uid:0),function(i,v){
 			var imgHmtl = "";

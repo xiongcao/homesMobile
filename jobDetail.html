@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/buildList.css" />
     <link rel="stylesheet" href="css/about.css" />
+    <link rel="stylesheet" href="css/job.css" />
 </head>
 <body>
 	<div class="container">
@@ -45,6 +46,17 @@
 					</div>
 				</div>
 			</header>
+			<div class="job">
+				<!-- <div class="title">web前端工程师</div>
+				<div class="job-tag"><span>scce</span><span>上海市浦东新区中港汇大厦5楼</span></div>
+				<p>岗位职责：</p>
+				<div class="txt">1.编写前端页面</div>
+				<p>任职要求：</p>
+				<div class="txt">1.精通javascript</div>
+				<p>薪资待遇：<span>20K</span></p>
+				<p>投递简历至</p>
+				<div class="txt">1049311111@redefining.com,我们期待您的加入</div> -->
+			</div>
 		</div>
 	    <div class="footer">
 	    	<img src="img/bottom-logo.png" class="footer-logo" />
@@ -105,7 +117,18 @@
 				</a>
 			</li>          
         {{/each}} 
-    </script> 
+	</script> 
+	<script id="job" type="text/html">
+		<div class="title">{{jname}}</div>
+		<div class="job-tag"><span>{{jname_en}}</span><span>{{location}}</span></div>
+		<p>岗位职责：</p>
+		<div class="txt">{{#duty}}</div>
+		<p>任职要求：</p>
+		<div class="txt">{{#request}}</div>
+		<p>薪资待遇：<span>{{salary}}</span></p>
+		<p>投递简历至</p>
+		<div class="txt">1049311111@redefining.com,我们期待您的加入</div>
+	</script>
 	<script type="text/javascript" src="js/zepto.min.js"></script>
 	<script src="js/swiper.min.js"></script>
 	<script src="js/template-web.js"></script>
@@ -115,7 +138,25 @@
 	<script type="text/javascript">
         /*导航*/
         var changeHtml = template('change',inithead());
-        $(".slidenav-cells").html(changeHtml);
+		$(".slidenav-cells").html(changeHtml);
+		
+		$.ajax({
+			type: 'get',
+			url: pubUrl + '/index/joinusdetails',
+			data: {
+				'id': GetQueryString('id'),
+			},
+			dataType: 'json',
+			async: false,
+			success: function(data){
+				console.log(data);
+				var html = template("job",data.data);
+				$('.job').html(html);							
+			},
+			error: function(err){
+				console.log(err)
+			}
+		})		
 	</script>
 </body>
 </html>

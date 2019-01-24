@@ -191,7 +191,6 @@ $("body").append(backTop);
 
 $(document).scroll(function(){
 	var scrollTop = $("html").scrollTop();	//滚动条高度
-	console.log(scrollTop)
 	if(scrollTop>1000){
 		$(".backTop").show();
 	}else{

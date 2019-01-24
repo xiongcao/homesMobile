@@ -251,6 +251,14 @@
 	<script src="js/login.js"></script>
 	<script src="js/collect.js"></script>
 	<script type="text/javascript">
+        /*导航*/
+        var changeHtml = template('change',inithead());
+        $(".slidenav-cells").html(changeHtml);
+        /*轮播*/
+        $.each(loops(getId(1)),function(i,val){
+			var html = '<div class="swiper-slide"><img src="'+pubUrl+val.img_path+'" /></div>';
+			$('.swiper-wrapper').append(html)
+		});
 		var mySwiper = new Swiper('.swiper-container',{
 			loop:true,
 		    pagination: {
@@ -259,15 +267,6 @@
 		    },
 			autoplay:1000
 		});
-        
-        /*导航*/
-        var changeHtml = template('change',inithead());
-        $(".slidenav-cells").html(changeHtml);
-        /*轮播*/
-        $.each(loops(getId(1)),function(i,val){
-			var html = '<div class="swiper-slide"><img src="'+pubUrl+val.img_path+'" /></div>';
-			$('.swiper-wrapper').append(html)
-        });
         /*加载*/
         var getUrl = GetQueryString('id');
         var returnData = (getUrl == '57') ? cases(0,1,userInfor?userInfor.uid:0) : cases(1,1,userInfor?userInfor.uid:0);

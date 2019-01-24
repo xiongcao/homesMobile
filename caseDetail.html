@@ -337,14 +337,6 @@
 	<script src="js/header.js?v=1.0.1"></script>
 	<script src="js/login.js"></script>
 	<script type="text/javascript">
-		var mySwiper = new Swiper('.swiper-container',{
-			loop:true,
-		    pagination: {
-		        el:'.swiper-pagination',
-		        clickable: true,
-		    },
-			autoplay:1000
-		});
         var $androidActionSheet = $('#androidActionsheet');
         var $androidMask = $androidActionSheet.find('.weui-mask');
         var $showcode = $('.showcode');
@@ -393,14 +385,21 @@
 			var html = '<div class="swiper-slide"><img src="'+pubUrl+val.img_path+'" /></div>';
 			$('.swiper-wrapper').append(html)
 		});
+		var mySwiper = new Swiper('.swiper-container',{
+			loop:true,
+		    pagination: {
+		        el:'.swiper-pagination',
+		        clickable: true,
+		    },
+			autoplay:1000
+		});
 		/*设计师*/
 		var designData = casedetail(GetQueryString('id'));
-		if(designData.designer){
-			designData.info.headphoto = pubUrl + designData.info.headphoto;
-			var designer = template('designer',designData);
-			$(".design").html(designer);
-			$(".bck p").text(designData.name);
-		}
+		console.log(designData,1111111111111111111);
+		designData.info.headphoto = pubUrl + designData.info.headphoto;
+		var designer = template('designer',designData);
+		$(".design").html(designer);
+		$(".bck p").text(designData.name);
 		/*案例列表*/
 		var _temCaseList = caseList(GetQueryString('id'));
 		var caseList = template('caseList',_temCaseList);

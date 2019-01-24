@@ -45,7 +45,7 @@ body {
 .backTop{
 	position: fixed;
     right: 10px;
-    top: 100px;
+    bottom: 200px;
     width: 30px;
     height: 30px;
 	background: #4a4a4a;

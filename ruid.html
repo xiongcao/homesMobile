@@ -232,14 +232,6 @@
 	<script src="js/header.js?v=1.0.1"></script>
 	<script src="js/login.js"></script>
 	<script type="text/javascript">
-		var mySwiper = new Swiper('.swiper-container',{
-			loop:true,
-		    pagination: {
-		        el:'.swiper-pagination',
-		        clickable: true,
-		    },
-			autoplay:1000
-		});
 
 		$('.app-pic-cell').on('touchstart',function(){
 			$(this).children('.geo-transform').css({
@@ -263,7 +255,15 @@
         $.each(loops(getId(5)),function(i,val){
 			var html = '<div class="swiper-slide"><img src="'+pubUrl+val.img_path+'" /></div>';
 			$('.swiper-wrapper').append(html)
-        }); 
+		}); 
+		var mySwiper = new Swiper('.swiper-container',{
+			loop:true,
+		    pagination: {
+		        el:'.swiper-pagination',
+		        clickable: true,
+		    },
+			autoplay:1000
+		});
         /*菜单*/
         $.each(ruid(5),function(i,val){
 			var html = '<span class="app-cell" id="'+val.id+'">'+val.name+'</span>';
