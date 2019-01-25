@@ -180,6 +180,7 @@
 	<script src="js/header.js?v=1.0.1"></script>
 	<script src="js/index.js?v=1.0.1"></script>
 	<script src="js/login.js"></script>
+	<script src="js/collect.js"></script>
 	<script type="text/javascript">
 		var mySwiper = new Swiper('.swiper-container',{
 			loop:true,
@@ -197,7 +198,9 @@
 			var ruidHtml = template('person',personInfor(userInfor.uid));
 			$(".app-contents").html(ruidHtml);
 		}
-        /*底部菜单*/
+		// $('.qr-down').children('img').attr('src',pubUrl + '/center/code' + '?uid=' + (userInfor ? userInfor.uid : 0) + '&url=' + window.location.href);
+		$('.qr-down').children('img').attr('src',pubUrl + '/center/code' + '?uid=' + (userInfor ? userInfor.uid : 0) + '&url=http://redefining.gr-studio.cn/homesMobile/personLoginOut.html');
+		/*底部菜单*/
        footerImg()
 	</script>
 </body>

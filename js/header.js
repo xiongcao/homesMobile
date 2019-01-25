@@ -644,6 +644,27 @@ var personNews = function(id){
 	return list	
 }
 
+/*消息*/
+var getGiftList = function(id){
+	var list = {};
+	$.ajax({
+		type: 'post',
+		url: pubUrl + '/center/gift_list',
+		data:{
+			uid: id
+		},
+		dataType: 'json',
+		async: false,
+		success: function(data){
+			list.data = data
+		},
+	    error: function(err){
+	     	console.log(err)
+	    }					
+	});
+	return list	
+}
+
 /*底部*/
 var initfooter = function(){
 	var list = [];

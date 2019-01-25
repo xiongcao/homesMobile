@@ -31,7 +31,7 @@
 					<div class="slide-navlist" id="1">
 						<ul class="slidenav-cells">
 							<li class="slidenav-cell">
-								<a href="index.html">
+								<a href="personLoginOut.html">
 									<span class="slidenav-cell-left">好友推广</span>
 									<span class="slidenav-cell-right"><i class="iconfont icon-youjiantou"></i></span>									
 								</a>
@@ -78,14 +78,7 @@
         </div>
         <!-- 内容区 start	 -->	
     	<div class="ps-main-center center-remark-1">
-    		<div class="ps-main-center-cell center-cell-light">
-	    		<div class="cell-black-left">
-	    			<img src="img/dollar.png" />
-	    			<label class="cell-black-title">赚取￥575设计基金</label>
-	    			<p class="cell-black-p" style="width:80%; margin:0.5rem auto 1rem">累计邀请200位好友注册成为会员，你即可获得高达￥575的设计基金。</p>
-	    			<button id="qr" class="btn btn-gold-large">邀请好友</button>	    			
-	    		</div>	    		
-    		</div>
+    		
 		</div>
         <div class="person-new">
         </div>
@@ -199,7 +192,19 @@
 	            <img src="img/close_1.png" class="cell-white-close" />
 			</div> 
 		{{/each}} 
-    </script>
+	</script>
+	<script id="giftList" type="text/html">
+		{{each data}}
+			<div class="ps-main-center-cell center-cell-light">
+				<div class="cell-black-left">
+					<img src="img/dollar.png" />
+					<label class="cell-black-title">赚取￥{{$value.money}}设计基金</label>
+					<p class="cell-black-p" style="width:80%; margin:0.5rem auto 1rem">累计邀请{{$value.number}}位好友注册成为会员，你即可获得高达￥575的设计基金。</p>
+					<button id="qr" class="inviteBtn btn btn-gold-large">邀请好友</button>	    			
+				</div>	    		
+			</div>
+		{{/each}}
+	</script>
 	<script type="text/javascript" src="js/zepto.min.js"></script>
 	<script src="js/swiper.min.js"></script>
 	<script src="js/template-web.js"></script>
@@ -234,7 +239,13 @@
 			var newHtml = template('news',personNews(userInfor.uid));
 			$(".person-new").html(newHtml);
 		}
-        
+		
+		//邀请获得金钱
+		var giftListHtml = template('giftList',getGiftList());
+		$(".ps-main-center").html(giftListHtml);
+
+		// $('.qr-down').children('img').attr('src',pubUrl + '/center/code' + '?uid=' + (userInfor ? userInfor.uid : 0) + '&url=' + window.location.href);
+		// $('.qr-down').children('img').attr('src',pubUrl + '/center/code' + '?uid=' + (userInfor ? userInfor.uid : 0) + '&url=http://redefining.gr-studio.cn/homesMobile/personNew.html');
         /*底部菜单*/
        footerImg()
 	</script>

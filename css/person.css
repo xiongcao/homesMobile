@@ -28,6 +28,7 @@
     right: 0; 
     margin-left: auto; 
     margin-right: auto; 
+    border-radius: 12.5vw;
 }
 .person-spread{
 	font-size:1.2rem;
@@ -96,7 +97,8 @@
 }
 .qr-content{
 	width: 70vw;
-	height:3rem;
+	/* height:3rem; */
+	height:2.2rem;
 	background: #fff;
 	display:flex;
 	flex-direction: column;
@@ -105,11 +107,12 @@
 .qr-content img{
 	width:3rem;
 	height:4rem;
-	margin-top:-2rem
+	margin-top:-4rem
 }
 .qr-content p{
 	font-size:0.8rem;
-	margin-top:0.5rem
+	/* margin-top:0.5rem */
+	margin-top:0.2rem
 }
 .qr-code {
     width: 70vw;
@@ -122,6 +125,11 @@
     background: #eeeeee;
     display: flex;
     align-items: center;
+}
+
+.qr-down img{
+    width: 89px;
+    height: 89px;
 }
 .qr-list {
     height: 2rem;

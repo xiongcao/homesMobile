@@ -16,7 +16,6 @@
                 </div>
             </div>`;
 
-//没有登录的弹窗
  var toast =  `
     <div id="toast" style="display: none;">
         <div class="weui-mask_transparent"></div>

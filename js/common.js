@@ -67,7 +67,15 @@ var $androidActionSheet = $('#androidActionsheet');
 var $androidMask = $androidActionSheet.find('.weui-mask');
 var $showcode = $('.showcode');
 
-$("#qr").on('click', function(){
+$("body").on('click','#qr,.inviteBtn', function(){
+	if(location.pathname.indexOf("personLoginOut")!=-1||location.pathname.indexOf("personLoginOut")!=-1){	//个人中心页面
+		console.log(userInfor);
+		if(!userInfor){
+			//没有登录的弹窗
+			$('#iosDialog2').fadeIn();
+			return false
+		}
+	}
 	$androidActionSheet.fadeIn(200);
 	$androidActionSheet.find('.qr-window').css('display','block').next().css('display','none');
 	$androidMask.on('click',function () {
@@ -77,6 +85,8 @@ $("#qr").on('click', function(){
 		$androidActionSheet.fadeOut(200);
 	});
 });
+
+
 
 $("#login").on('click', function(){
     $androidActionSheet.fadeIn(200);
