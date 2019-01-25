@@ -1,4 +1,4 @@
-$('.btn-submit').on('click',function(){
+$('.reqMsg').on('click',function(){
 	var checktel = checkcall = checkname = checkemail = checktext = false;
 	var $phone = /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/;
 	var telVal=$('#phone').val();

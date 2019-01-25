@@ -68,6 +68,7 @@ var $androidMask = $androidActionSheet.find('.weui-mask');
 var $showcode = $('.showcode');
 
 $("body").on('click','#qr,.inviteBtn', function(){
+	$(".price-window").hide();
 	if(location.pathname.indexOf("personLoginOut")!=-1||location.pathname.indexOf("personLoginOut")!=-1){	//个人中心页面
 		console.log(userInfor);
 		if(!userInfor){
@@ -107,6 +108,8 @@ $("#login").on('click', function(){
     });
 });
 $("#price").on('click', function(){
+	$(".shutdown").hide();
+	$(".qr-window").hide();
     $androidActionSheet.fadeIn(200);
     $('.icon-guanbi').animate({
 			opacity:'0'
@@ -210,6 +213,109 @@ $(document).scroll(function(){
 
 $(document).on("click",'.backTop',function(){
 	$("html").scrollTop(0)
+})
+
+//报价单
+$(".quoteBtn").on("click",function(){
+	var checktel = checknick = checkname = checkarea = false;
+	var $phone = /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/;
+
+	var nameVal=$('#name').val();
+	if(!nameVal){
+		$('#iosDialog2').fadeIn();
+		$('.weui-dialog__bd').text('姓名不能为空');	
+		return false
+	}
+	else{
+		checkname = true;
+	}
+
+	var telVal=$('#phone').val();
+	if(!telVal){
+		$('#iosDialog2').fadeIn();
+		$('.weui-dialog__bd').text('电话不能为空');
+		return false
+	}else{
+		if(!$phone.test(telVal)){
+			$('#iosDialog2').fadeIn();
+			$('.weui-dialog__bd').text('电话号码格式有误');
+			return false
+		}else{
+			checktel=true
+		}						
+	}
+	var callVal=$("#nick").val();
+	if(!callVal){
+		$('#iosDialog2').fadeIn();
+		$('.weui-dialog__bd').text('楼盘名称不能为空');		
+		return false
+	}
+	else{
+		checknick = true;
+	}
+	
+	var areaVal=$('#area').val();
+	if(!areaVal){
+		$('#iosDialog2').fadeIn();
+		$('.weui-dialog__bd').text('房屋面积不能为空');
+		return false
+	}
+	else{
+		checkarea = true;
+	}
+	if(checktel&&checkname&&checknick&&checkarea){
+		$.ajax({
+			type: 'post',
+			url: pubUrl + '/index/getprice',
+			data: {
+				'name': $('#name').val(),
+				'phone': $('#phone').val(),
+				'area': $('#area').val(),
+				'house_name': $('#nick').val()
+			},
+			dataType: 'json',
+			async: false,
+			success: function(data){
+				console.log(data);
+				$('#iosDialog2').fadeIn();
+				if(data.status == 1){
+					$('.weui-dialog__bd').text('提交成功');
+				}else{
+					$('.weui-dialog__bd').text('提交失败');
+				}
+			},
+		    error: function(err){
+		     	console.log(err)
+		    }
+		})					
+	}
+});
+
+//轮播详情跳锚点
+$(document).on("click",".anchor",function(){
+	var _name = location.pathname;
+	var tid = 0;
+	if(_name.indexOf("caseDetail")!=-1){	//案例
+		tid = 1;
+	}else if(_name.indexOf("buildDetail")!=-1&&$(this).data("did")==1){
+		tid = 2;
+	}else if(_name.indexOf("buildDetail")!=-1&&$(this).data("did")==2){
+		tid = 3;
+	}else if(_name.indexOf("designPointDetail")!=-1){
+		tid = 4;
+	}
+	var pid = $(this).data("pid");
+	$.ajax({
+		type: 'get',
+		url: `http://ff.jiaoyifan.net/anchor/${tid}/${pid}`,
+		async: false,
+		success: function(data){
+			// location.href = data[0].link;
+		},
+		error: function(err){
+			 console.log(err)
+		}					
+	})
 })
 
 var _53code = document.createElement("script");

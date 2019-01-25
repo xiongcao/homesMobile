@@ -108,64 +108,6 @@
 		<div id="content-area">
 			
 		</div>
-        <!-- 内容区 -->
-		<!--<div class="app-pic-list">
-			<div class="app-pic-cell">
-				<a href="caseDetail.html">
-					<img src="img/cell_big.png" />
-				</a>
-				<div class="geo-transform">
-					<span>曼哈顿</span>
-					<div class="label-content">
-					    <label>顶层豪宅会所</label>
-					    <span>立即咨询</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="app-pic-list">
-			<div class="app-pic-cell">
-				<a href="caseDetail.html">
-					<img src="img/cell_big.png" />
-				</a>
-				<div class="geo-transform">
-					<span>曼哈顿</span>
-					<div class="label-content">
-					    <label>顶层豪宅会所</label>
-					    <span>立即咨询</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="app-pic-list">
-			<div class="app-pic-cell">
-				<a href="caseDetail.html">
-					<img src="img/cell_big.png" />
-				</a>
-				<div class="geo-transform">
-					<span>曼哈顿</span>
-					<div class="label-content">
-					    <label>顶层豪宅会所</label>
-					    <span>立即咨询</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="app-pic-list">
-			<div class="app-pic-cell">
-				<a href="caseDetail.html">
-					<img src="img/cell_big.png" />
-				</a>
-				<div class="geo-transform">
-					<span>曼哈顿</span>
-					<div class="label-content">
-					    <label>顶层豪宅会所</label>
-					    <span>立即咨询</span>
-					</div>
-				</div>
-			</div>
-		</div>-->
-        <!-- 内容区 end	 -->					
 		<div class="other-point">
 			<span class="relate">Other  related</span>
 			<div class="other-line"></div>
@@ -223,13 +165,13 @@
         			<label>快速获取装修报价</label>
         		</div>	 
         		<div class="price-middle">
-        			<input type="text" placeholder="您的姓名" />
-        			<input type="text" placeholder="手机号" />
-        			<input type="text" placeholder="楼盘名称" />
-        			<input type="text" placeholder="房屋面积" />
+        			<input type="text" id="name" placeholder="您的姓名" />
+        			<input type="text" id="phone" placeholder="手机号" />
+        			<input type="text" id="nick" placeholder="楼盘名称" />
+        			<input type="text" id="area" placeholder="房屋面积" />
         		</div>
         		<div class="login-bottom">
-        			<button class="btn-submit btn-yellow">获取报价</button>
+        			<button class="btn-submit btn-yellow quoteBtn">获取报价</button>
         			<p class="price-phone">免费咨询热线: 400-512-228</p>
         		</div>	        		
         	</div>
@@ -379,7 +321,7 @@
         $(".slidenav-cells").html(changeHtml);
         /*轮播*/
 		$.each(loopsOne(GetQueryString('id')),function(i,val){
-			var html = '<div class="swiper-slide"><img src="'+pubUrl+val.img_path+'" /></div>';
+			var html = '<div class="swiper-slide anchor" data-pid='+val.id+'><img src="'+pubUrl+val.img_path+'" /></div>';
 			$('.swiper-wrapper').append(html)
 		});
 		var mySwiper = new Swiper('.swiper-container',{

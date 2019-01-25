@@ -88,15 +88,7 @@
         <div class="app-contents">
 			<div class="swiper-container">
 			    <div class="swiper-wrapper" id="swiper-2">
-			        <!--<div class="swiper-slide">
-			        	<img src="img/buildList_3.png" />
-			        </div>
-			        <div class="swiper-slide">
-			        	<img src="img/buildList_3.png" />
-			        </div>
-			        <div class="swiper-slide">
-			        	<img src="img/buildList_3.png" />
-			        </div>-->
+			    
 			    </div>
 		    </div>
 	        <div class="design">
@@ -297,19 +289,19 @@
         $(".slidenav-cells").html(changeHtml);
         /*轮播*/
         $.each(buildLoop(GetQueryString('id'),1),function(i,val){
-			var html = '<div class="swiper-slide"><img src="'+pubUrl+val.img+'" /></div>';
+			var html = '<div class="swiper-slide anchor" data-did="1" data-pid='+val.id+'><img src="'+pubUrl+val.img+'" /></div>';
 			$('#swiper-1').append(html)
 		}); 
-		var mySwiper = new Swiper('.swiper-container',{
-			loop:true,
-		    pagination: {
-		        el:'.swiper-pagination',
-		        clickable: true,
-		    },
-			autoplay:1000
-		});
+		// var mySwiper = new Swiper('.swiper-container',{
+		// 	loop:true,
+		//     pagination: {
+		//         el:'.swiper-pagination',
+		//         clickable: true,
+		//     },
+		// 	autoplay:1000
+		// });
         $.each(buildLoop(GetQueryString('id'),2),function(i,val){
-			var html = '<div class="swiper-slide"><img src="'+pubUrl+val.img+'" /></div>';
+			var html = '<div class="swiper-slide anchor" data-did="2" data-pid='+val.id+'><img src="'+pubUrl+val.img+'" /></div>';
 			$('#swiper-2').append(html)
 		});
 		var mySwiper = new Swiper('.swiper-container',{
@@ -382,7 +374,7 @@
 		/*轮播*/
 		if(designData.case){
 			$.each(loopsOne(designData.case.id),function(i,val){
-				var html = '<div class="swiper-slide"><img src="'+pubUrl+val.img_path+'" /></div>';
+				var html = '<div class="swiper-slide anchor" data-did="2" data-pid='+val.id+'><img src="'+pubUrl+val.img_path+'" /></div>';
 				$('.swiper-wrapper').append(html)
 			});
 			var mySwiper = new Swiper('.swiper-container',{

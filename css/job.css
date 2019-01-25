@@ -29,20 +29,26 @@
     padding-right: 15px;
 }
 
-.job p{
+.job>p{
     margin:10px 0;
     padding-left: 1.5rem;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: bold;
 }
 
-.job p span{
-    font-size: 12px;
+.job>p span{
+    font-size: 14px;
 }
 
 .job .txt{
-    font-size: 12px;
+    font-size: 14px;
     padding-left: 1.5rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+}
+
+.job .txt p{
+    font-size: 12px;
 }
 
 .app-wrapper{
