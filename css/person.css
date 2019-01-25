@@ -297,3 +297,7 @@
 .cell-black-null p{
     font-size: 14px;
 }
+
+.slidenav-cell:hover{
+    background: #cfcfcf;
+}
