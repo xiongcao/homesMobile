@@ -147,54 +147,6 @@
         <!-- 内容区 -->
         <div id="app-content">
         </div>
-		<!-- <div class="app-pic-list">
-			<div class="app-pic-cell">
-				<img src="img/main_second.png" />
-				<div class="bottom-set">
-						<label class="bottom-title-big">睿缔-纷凡</label>
-						<p class="bottom-text">整合全球高端家居行业资源,联合千余欧洲顶级家具品牌,臻选全球美学名品,独创无限混搭风格。</p>
-						<a href="fenfanFirst.html">
-							<button class="btn actives">探索领域</button>
-						</a>
-					</div>
-			</div>
-		</div>
-		<div class="app-pic-list">
-			<div class="app-pic-cell">
-				<img src="img/main_second.png" />
-				<div class="bottom-set">
-						<label class="bottom-title-big">睿缔-纷凡</label>
-						<p class="bottom-text">整合全球高端家居行业资源,联合千余欧洲顶级家具品牌,臻选全球美学名品,独创无限混搭风格。</p>
-						<a href="fenfanFirst.html">
-							<button class="btn actives">探索领域</button>
-						</a>
-					</div>
-			</div>
-		</div>	
-		<div class="app-pic-list">
-			<div class="app-pic-cell">
-				<img src="img/main_second.png" />
-				<div class="bottom-set">
-						<label class="bottom-title-big">睿缔-纷凡</label>
-						<p class="bottom-text">整合全球高端家居行业资源,联合千余欧洲顶级家具品牌,臻选全球美学名品,独创无限混搭风格。</p>
-						<a href="fenfanFirst.html">
-							<button class="btn actives">探索领域</button>
-						</a>
-					</div>
-			</div>
-		</div>
-		<div class="app-pic-list">
-			<div class="app-pic-cell">
-				<img src="img/main_second.png" />
-				<div class="bottom-set">
-						<label class="bottom-title-big">睿缔-纷凡</label>
-						<p class="bottom-text">整合全球高端家居行业资源,联合千余欧洲顶级家具品牌,臻选全球美学名品,独创无限混搭风格。</p>
-						<a href="fenfanFirst.html">
-							<button class="btn actives">探索领域</button>
-						</a>
-					</div>
-			</div>
-        </div>	 -->
         <!-- 内容区 end	 -->					
 		<div class="other-point">
 			<span class="relate">Other  related</span>
@@ -236,20 +188,41 @@
                 <span>{{designer.visit}}</span>
             </div>
         </div>
-        <div class="design-info"></div>
+        <div class="design-info">{{designer.designerCon}}</div>
         <div class="design-share">
             <img src="img/fenfanS_27.png" alt="">
             <span>分享</span>
         </div>
-    </script>
-    <script id="builddetail" type="text/html">
-        <div class="middle-button">
-            <i>您可能喜欢</i>
-            <span class="action">相关案例</span>
-            <span>相关设计师</span>
-            <span>相关产品</span>
-        </div>
-    </div>   
+    </script> 
+	</script>
+	<script id="caseList" type="text/html">
+		{{if data.length!=0}}
+			<nav class="middle-nav">
+				{{each data}}
+					<span id="{{$index}}" data-id="{{$value.caseid}}">{{$value.title}}</span>
+				{{/each}}
+				<span class="last"></span>
+			</nav>
+			<div>
+				{{each data}}
+					{{if $index == 0}}
+						<div class="middle-text" id="menu_{{$index}}">
+							{{$value.text}}
+						</div>
+					{{else}}
+						<div class="middle-text" style="display:none"  id="menu_{{$index}}">
+							{{$value.text}}
+						</div>
+					{{/if}}
+				{{/each}}        	
+			</div>
+		{{/if}}
+		<div class="middle-button">
+			<i>您可能喜欢</i>
+			<span class="action">相关案例</span>
+			<span>相关设计师</span>
+			<span>相关产品</span>
+		</div>
     </script>
     <script id="change" type="text/html">
         {{each data}}
@@ -335,40 +308,36 @@
 		    },
 			autoplay:1000
 		});
-        console.log(buildLoop(GetQueryString('id'),2));
         $.each(buildLoop(GetQueryString('id'),2),function(i,val){
 			var html = '<div class="swiper-slide"><img src="'+pubUrl+val.img+'" /></div>';
 			$('#swiper-2').append(html)
-        });
+		});
+		var mySwiper = new Swiper('.swiper-container',{
+			loop:true,
+		    pagination: {
+		        el:'.swiper-pagination',
+		        clickable: true,
+		    },
+			autoplay:1000
+		});
         var designData = buildcontent(GetQueryString('id'));
         /*户型详情*/
-        // buildcontent(GetQueryString('id'));
         $('.build-L').text(designData.house_type.name);
 		$.each(designData.floor,function(i,val){
 			var html = '<span id="'+val+'">'+val+'</span>';
 			$('#first-choice').append(html)
 		});
-		var _desc_name_hmtl = "" ,_desc_hmtl = "";
-		$.each(designData.desc,function(i,val){
-			_desc_name_hmtl+= "<span id="+i+" data-id='"+val.id+"'>"+val.title+"</span>";
-			if(i==0){
-				_desc_hmtl+= "<div class='middle-text' id='menu_"+i+"'>"+val.content+"</div>"
-			}else{
-				_desc_hmtl+= "<div class='middle-text'  style='display:none' id='menu_"+i+"'>"+val.content+"</div>"
-			}
-		});
-		$(".middle-nav").html(_desc_name_hmtl);
-		$(".middle-text").html(_desc_hmtl);
-		$(document).on('click','.middle-nav span',function(){
-			var _this = $(this);
-			var th_id = 'menu_' + _this.attr('id');
-			console.log(th_id);			
-			$('.middle-text').each(function(){
-				if(th_id == $(this).attr('id')){
-					$(this).css('display','flex').siblings().css('display','none')
-				}
-			})
-		})
+		// var _desc_name_hmtl = "" ,_desc_hmtl = "";
+		// $.each(designData.desc,function(i,val){
+		// 	_desc_name_hmtl+= "<span id="+i+" data-id='"+val.id+"'>"+val.title+"</span>";
+		// 	if(i==0){
+		// 		_desc_hmtl+= "<div class='middle-text' id='menu_"+i+"'>"+val.content+"</div>"
+		// 	}else{
+		// 		_desc_hmtl+= "<div class='middle-text'  style='display:none' id='menu_"+i+"'>"+val.content+"</div>"
+		// 	}
+		// });
+		// $(".middle-nav").html(_desc_name_hmtl);
+		// $(".middle-text").html(_desc_hmtl);
 		$('#first-choice span:nth-child(1)').addClass('actives');
 		var _buildPlaneData = buildPlane(GetQueryString('id'),1);
 		$.each(_buildPlaneData,function(i){
@@ -406,26 +375,51 @@
 		/*设计师*/
 		if(designData.designer){
 			designData.designer.headphoto = pubUrl + designData.designer.headphoto;
+			designData.case && (designData.designer.designerCon = designData.case.designerCon);
 			var designer = template('design',designData);
 			$(".design").html(designer);
 		}
-		designData.house && $('.design-info').html(designData.house.introduce);
-		console.log(designData);
-		/*设计师案例*/
-//		var builddetail = template('builddetail',designData);
-//		$(".bottom-content-cell").html(builddetail);
-        /*底部菜单*/
+		/*轮播*/
+		if(designData.case){
+			$.each(loopsOne(designData.case.id),function(i,val){
+				var html = '<div class="swiper-slide"><img src="'+pubUrl+val.img_path+'" /></div>';
+				$('.swiper-wrapper').append(html)
+			});
+			var mySwiper = new Swiper('.swiper-container',{
+				loop:true,
+				pagination: {
+					el:'.swiper-pagination',
+					clickable: true,
+				},
+				autoplay:1000
+			});
+
+			/*空间造价*/
+			var _temCaseList = caseList(designData.case.id);
+			var caseList = template('caseList',_temCaseList);
+			$(".bottom-content-cell").html(caseList);
+			$(document).on('click','.middle-nav span',function(){
+				var _this = $(this);
+				var th_id = 'menu_' + _this.attr('id');
+				$('.middle-text').each(function(){
+					if(th_id == $(this).attr('id')){
+						$(this).css('display','flex').siblings().css('display','none')
+					}
+				})
+			})
+		}
+		// designData.house && $('.design-info').html(designData.house.introduce);
+		
 		/*内容*/
 		var data = houseCase(GetQueryString('id'),1,userInfor?userInfor.uid:0);
-		console.log(data);
 		$.each(data,function(i,v){
 			var html = '<div class="app-pic-list">'
 							+'<div class="app-pic-cell">'
 							    +'<a href="casedatail.html?id='+v.id+'">'
-								+'<img src="'+pubUrl+v.photoUrlA+'" />'
+								+'<img src="'+pubUrl+v.appsmall+'" />'
 								+'</a>'
 								+'<div class="geo-transform">'
-									+'<span>'+v.departmentId+'</span>'
+									+'<span>'+v.address+'</span>'
 									+'<div class="label-content">'
 									    +'<label>'+v.name+'</label>'
 									    +'<span>立即咨询</span>'
@@ -433,8 +427,9 @@
 								+'</div>'
 							+'</div>'
 						+'</div>';
-			$('#app-content').append(html)
-		})		
+			$('#app-content').append(html);
+		})	
+
 		/*点击*/
 		$('.middle-button span').on('click',function(){
 			$(this).addClass('action').siblings().removeClass('action');
@@ -460,15 +455,15 @@
 					$('#app-content').append(html)
 				})
 			}else{
-				data = houseCase(GetQueryString('id'),1);
+				var data = houseCase(GetQueryString('id'),1,userInfor?userInfor.uid:0);
 				$.each(data,function(i,v){
 					var html = '<div class="app-pic-list">'
 									+'<div class="app-pic-cell">'
 									    +'<a href="casedatail.html?id='+v.id+'">'
-										+'<img src="'+pubUrl+v.photoUrlA+'" />'
+										+'<img src="'+pubUrl+v.appsmall+'" />'
 										+'</a>'
 										+'<div class="geo-transform">'
-											+'<span>'+v.departmentId+'</span>'
+											+'<span>'+v.address+'</span>'
 											+'<div class="label-content">'
 											    +'<label>'+v.name+'</label>'
 											    +'<span>立即咨询</span>'
@@ -476,7 +471,7 @@
 										+'</div>'
 									+'</div>'
 								+'</div>';
-					$('#content-area').append(html)
+					$('#app-content').append(html)
 				})					
 			}
 		});

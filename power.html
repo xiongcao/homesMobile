@@ -77,58 +77,10 @@
 			</section>
 		</div>
 		<div class="app-describe" style="margin-top: -1rem;">
-			<div class="app-title">
-				<label>关于创意的一切</label>
-				<label>都和睿缔有关</label>
-			</div>
-			<div class="app-contents">
-				睿缔创意设计核心服务内容是“懂你懂房子”，通过与客户的沟通，挖掘客户内心对家的憧憬。与此同时，了解住宅原始建筑的细统数据信息，根据住宅信息输出科学的、具有可实施性的基础设计方案，并且将客户精神需求、生活需求融入设计，通过功能、价格、美学、人文、文脉等5个方面实现创意设计完美呈现。
-			</div>
-			<div class="app-btn">
-				<button class="btn btn-normal cover">保持联系</button>
-			</div>
 		</div>
 		<div class="app-pic-list">
 			<div class="swiper-containers">
 			    <div class="swiper-wrapper" id="swiper-2">
-			        <!--<div class="swiper-slide">
-						<div class="app-pic-cell">
-							<a href="powerDesigner.html">
-								<img src="img/design_1.png" />
-							</a>
-							<div class="geo-transform">
-								<span>创意设计部</span>
-								<div class="label-content">
-								    <label>黄晨星</label>
-								    <span>立即咨询</span>
-								</div>
-							</div>
-						</div>
-			        </div>
-			        <div class="swiper-slide">
-						<div class="app-pic-cell">
-							<img src="img/design_1.png" />
-							<div class="geo-transform">
-								<span>创意设计部</span>
-								<div class="label-content">
-								    <label>黄晨星</label>
-								    <span>立即咨询</span>
-								</div>
-							</div>
-						</div>
-			        </div>
-			        <div class="swiper-slide">
-						<div class="app-pic-cell">
-							<img src="img/design_3.png" />
-							<div class="geo-transform">
-								<span>创意设计部</span>
-								<div class="label-content">
-								    <label>黄晨星</label>
-								    <span>立即咨询</span>
-								</div>
-							</div>
-						</div>
-			        </div>-->
 			    </div>
 		    </div>
 		</div>
@@ -253,8 +205,9 @@
 	<script src="js/collect.js?v=1.0.1"></script>
 	<script type="text/javascript">
 		
-        /*导航*/
-        var changeHtml = template('change',inithead());
+		/*导航*/
+		var navListData = inithead();
+        var changeHtml = template('change',navListData);
         $(".slidenav-cells").html(changeHtml);
         /*轮播*/
         $.each(loops(getId(3)),function(i,val){
@@ -269,15 +222,17 @@
 		    },
 			autoplay:1000
 		});
-        /*设计师轮播*/
-        $.each(designer(GetQueryString('id'),userInfor?userInfor.uid:0),function(i,v){
+		/*设计师轮播*/
+		var designerHtml = "";
+		var designerSwiper = designer(GetQueryString('id'),userInfor?userInfor.uid:0);
+        $.each(designerSwiper,function(i,v){
 			var imgHmtl = "";
 			if(v.is_collect==0){
 				imgHmtl = '<img src="img/thumbs_up_1.png" class="thumb_up" name="'+v.id+'" />'
 			}else{
 				imgHmtl = '<img src="img/thumbs_up_2.png" class="thumb_up" name="'+v.id+'" />'
 			}
-        	var html = '<div class="swiper-slide">'
+        	designerHtml += '<div class="swiper-slide">'
 						+'<div class="app-pic-cell">'
 						    +'<a href="powerDesigner.html?id='+v.id+'">'
 							+'<img src="'+pubUrl+v.photoUrlA+'" />'
@@ -292,8 +247,25 @@
 							+'</div>'
 						+'</div>'
 			        +'</div>';
-			$('#swiper-2').append(html)        
-		})
+			})
+		$('#swiper-2').append(designerHtml)        
+		var mySwiper = new Swiper('.swiper-containers',{
+			loop:true,
+		    pagination: {
+		        el:'.swiper-pagination',
+		        clickable: true,
+			},
+			on: {
+				// touchEnd: function(event){
+				// 	$(".contactBtn").attr("data-src",event.target.currentSrc)
+				// },
+				// init: function(){
+				// 	$(".contactBtn").attr("data-src",pubUrl + designerSwiper[this.activeIndex-1].photoUrlA)
+				// }
+			},
+			autoplay:1000
+		});
+
 		/*心愿单*/
 		$(document).on('click','.thumb_up',function(){
 			if(userInfor == null){
@@ -317,7 +289,30 @@
 		            }, 2000);
 				}
 			}
-		});    
+		});  
+		
+		//设计师
+		 
+		var powerData = null;
+		var childNav = navListData.data[3].child;
+		childNav.forEach((o,i) => {
+			if(o.id==GetQueryString("id")){
+				powerData = o;
+			}
+		});
+
+		var _html = `
+			<div class="app-title">
+				<label>${powerData.title}</label>
+			</div>
+			<div class="app-contents">${powerData.text}</div>
+			<div class="app-btn">
+				<button class="btn btn-normal contactBtn">保持联系</button>
+			</div>`;
+		$(".app-describe").html(_html);
+		$("body").on("click",'.contactBtn',function(){
+			location.href = powerData.more;
+		})
         /*底部菜单*/
        footerImg()
 	</script>

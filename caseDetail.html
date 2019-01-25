@@ -304,9 +304,6 @@
         	{{each data}}
                 <span id="{{$index}}" data-id="{{$value.caseid}}">{{$value.title}}</span>
             {{/each}}
-            <!--<span>造价</span>
-            <span>解决方案</span>
-            <span>风格</span>-->
             <span class="last"></span>
         </nav>
         <div>
@@ -395,12 +392,11 @@
 		});
 		/*设计师*/
 		var designData = casedetail(GetQueryString('id'));
-		console.log(designData,1111111111111111111);
 		designData.info.headphoto = pubUrl + designData.info.headphoto;
 		var designer = template('designer',designData);
 		$(".design").html(designer);
 		$(".bck p").text(designData.name);
-		/*案例列表*/
+		/*空间造价*/
 		var _temCaseList = caseList(GetQueryString('id'));
 		var caseList = template('caseList',_temCaseList);
 		$(".bottom-content-cell").html(caseList);
